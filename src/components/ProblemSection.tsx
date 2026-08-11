@@ -70,9 +70,9 @@ export default function ProblemSection() {
                 transition={{ delay: i * 0.08 }}
                 className="flex items-center gap-3"
               >
-                <div className="px-5 py-3 rounded-xl glass-card text-sm font-bold gradient-text-blue border border-ice-200/50 shadow-sm">
-                  {step}
-                </div>
+                <div className="px-5 py-3 rounded-xl glass-card text-sm font-bold text-ice-600 border border-ice-200/50 shadow-sm">
+               {step}
+           </div>
                 {i < NEW_WORKFLOW.length - 1 && (
                   <span className="text-ice-400 text-lg">→</span>
                 )}
