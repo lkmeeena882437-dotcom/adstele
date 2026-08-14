@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://adstele.vercel.app/sitemap.xml
