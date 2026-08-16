@@ -6,7 +6,7 @@ export const BRAND = {
   name: 'Adstele Agency',
   tagline: 'Premium Performance Marketing',
   supportingLine: 'META ADS × GOOGLE ADS × TELEGRAM ADS',
-  statement: 'We scale businesses with precision advertising. Our expert media buyers manage your ad spend across Meta, Google, and Telegram to drive predictable ROI.',
+  statement: 'Your Meta, Google & Telegram ads — planned, launched and scaled by expert media buyers. Predictable growth, zero dashboard stress.',
   copyright: '© 2026 J.B GOUTTAM. All rights reserved.',
 };
 
@@ -31,7 +31,7 @@ export const SERVICES = [
     icon: '📘',
     title: 'META ADS MANAGEMENT',
     subtitle: 'Facebook & Instagram Advertising',
-    description: 'Data-driven Meta Ads management. We handle everything from audience research to daily bid optimization, scaling your winning campaigns profitably.',
+    description: 'Full-funnel Facebook & Instagram campaigns — researched, launched and scaled daily.',
     details: ['Audience research & targeting', 'Pixel & CAPI setup', 'Daily campaign monitoring', 'Budget scaling strategy', 'Monthly performance reporting'],
   },
   {
@@ -39,7 +39,7 @@ export const SERVICES = [
     icon: '🔍',
     title: 'GOOGLE ADS MANAGEMENT',
     subtitle: 'Search, Display & YouTube Ads',
-    description: 'Capture high-intent traffic with precision Google Ads. We manage your search intent, negative keywords, and YouTube placements to maximize conversions.',
+    description: 'Capture ready-to-buy search traffic with precise keywords, bids and conversion tracking.',
     details: ['Keyword research & strategy', 'Search & display campaigns', 'Conversion tracking setup', 'Bid & budget optimization', 'Monthly performance reporting'],
   },
   {
@@ -47,7 +47,7 @@ export const SERVICES = [
     icon: '📢',
     title: 'TELEGRAM ADS',
     subtitle: 'Direct Telegram Marketing',
-    description: 'Tap into highly engaged Telegram communities. We manage TON Ads and direct channel placements to grow your audience instantly.',
+    description: 'Own attention inside engaged Telegram communities with TON Ads and direct placements.',
     details: ['Campaign strategy', 'TON Ads management', 'Channel rank optimization', 'Audience targeting', 'Direct placements'],
   },
   {
@@ -55,7 +55,7 @@ export const SERVICES = [
     icon: '🖥️',
     title: 'HIGH-CONVERTING WEBSITES',
     subtitle: 'Web & Landing Page Development',
-    description: 'Ads need a destination that converts. We build premium, lightning-fast websites and landing pages optimized for paid traffic.',
+    description: 'Lightning-fast pages engineered to turn your ad clicks into customers.',
     details: ['Business websites', 'Landing pages for ad campaigns', 'Mobile-responsive design', 'Fast, modern builds', 'Conversion rate optimization (CRO)'],
   },
   {
@@ -63,7 +63,7 @@ export const SERVICES = [
     icon: '🎨',
     title: 'AD CREATIVE DESIGN',
     subtitle: 'Performance Visuals',
-    description: 'High-quality ad creatives designed specifically to stop the scroll. We test variations to find the winning angles for your brand.',
+    description: 'Scroll-stopping visuals, A/B tested until we find your winning angle.',
     details: ['Static ad creatives', 'Short-form ad videos', 'A/B creative testing', 'Brand-consistent design', 'Platform-optimized formats'],
   },
 ];
@@ -75,7 +75,7 @@ export const PRICING = [
     subtitle: 'Complete Telegram Ad Package',
     price: '₹14,999',
     period: '',
-    description: 'End-to-end management for your Telegram Ad campaigns.',
+    description: 'End-to-end Telegram campaign — setup, targeting, creative & launch.',
     features: [
       'Telegram TON Ad campaign',
       'Campaign setup & targeting',
@@ -93,7 +93,7 @@ export const PRICING = [
     subtitle: 'Facebook & Instagram Management',
     price: '₹3,199',
     period: '/month',
-    description: 'Expert monthly management of your Meta Ads campaigns.',
+    description: 'Full monthly management of your Facebook & Instagram campaigns.',
     features: [
       'Facebook & Instagram setup',
       'Audience research & targeting',
@@ -112,7 +112,7 @@ export const PRICING = [
     subtitle: 'Search, Display & YouTube',
     price: '₹3,599',
     period: '/month',
-    description: 'Complete Google Ads management with all benefits included.',
+    description: 'Search, Display & YouTube — tracked, tuned and optimized monthly.',
     features: [
       'Keyword research & strategy',
       'Search & display campaigns',
@@ -130,7 +130,7 @@ export const PRICING = [
     subtitle: 'Web & Landing Pages',
     price: 'Custom',
     period: ' Quote',
-    description: 'Premium websites built to convert your ad traffic.',
+    description: 'Premium sites & landing pages built to convert paid traffic.',
     features: [
       'Business websites',
       'High-converting landing pages',
@@ -164,3 +164,95 @@ export const DISCLAIMER = {
   marketing: 'We sell professional advertising management and web development services. Campaign performance depends on market demand, creative quality, offer strength, and platform algorithms. We do not guarantee specific sales, revenue, or ROAS.',
   financial: 'Our marketing services do not constitute financial or investment advice.',
 };
+
+export const HERO_STATS = [
+  { value: 4.8, decimals: 1, prefix: '', suffix: 'x', label: 'AVG. ROAS DELIVERED' },
+  { value: 120, decimals: 0, prefix: '', suffix: '+', label: 'CAMPAIGNS LAUNCHED' },
+  { value: 2, decimals: 0, prefix: '₹', suffix: 'Cr+', label: 'AD SPEND MANAGED' },
+  { value: 24, decimals: 0, prefix: '', suffix: '/7', label: 'MONITORING & SUPPORT' },
+];
+
+export const PROBLEMS = [
+  {
+    icon: '📉',
+    title: 'YOUR ADS HIT A CEILING',
+    description: 'Bigger budgets, same results. Scaling needs fresh creatives, new angles and daily bid work.',
+  },
+  {
+    icon: '💸',
+    title: 'BUDGET LEAKS DAILY',
+    description: 'Wrong targeting and broken tracking silently burn 30–40% of your ad spend every month.',
+  },
+  {
+    icon: '⏰',
+    title: 'NO TIME TO OPTIMIZE',
+    description: 'You run the business. Daily monitoring, testing and reports are a second job — ours, not yours.',
+  },
+];
+
+export const NICHES = [
+  'D2C BRANDS',
+  'E-COMMERCE',
+  'ED-TECH',
+  'REAL ESTATE',
+  'SAAS',
+  'HEALTH & FITNESS',
+  'LOCAL BUSINESS',
+  'FINANCE',
+];
+
+export const STANDARD = [
+  {
+    icon: '👤',
+    title: 'DEDICATED MEDIA BUYER',
+    description: 'One experienced buyer owns your account end-to-end — not a rotating support queue.',
+  },
+  {
+    icon: '🛡️',
+    title: 'YOUR BUDGET, YOURS',
+    description: 'Ad spend goes straight to the platform. We bill only our management fee — full transparency.',
+  },
+  {
+    icon: '📊',
+    title: 'PLAIN-LANGUAGE REPORTS',
+    description: 'One clear monthly report telling you exactly what scaled and what we fixed.',
+  },
+];
+
+export const WORKFLOW = [
+  {
+    step: '01',
+    icon: '🎯',
+    title: 'STRATEGY & AUDIT',
+    description: 'We audit your business, audience and competitors, then build a custom media plan around your goals.',
+  },
+  {
+    step: '02',
+    icon: '🚀',
+    title: 'SETUP & LAUNCH',
+    description: 'Pixels, conversion tracking and campaigns go live across Meta, Google and Telegram — handled end-to-end.',
+  },
+  {
+    step: '03',
+    icon: '⚙️',
+    title: 'DAILY OPTIMIZATION',
+    description: 'Bids, budgets, creatives and targeting are tuned every single day to squeeze out maximum performance.',
+  },
+  {
+    step: '04',
+    icon: '📈',
+    title: 'SCALE & REPORT',
+    description: 'Winning campaigns scale profitably. You get a clear monthly performance report in plain language.',
+  },
+];
+
+// Per-section 3D visual identity — drives the global scene palette,
+// aurora glow colors and particle tints as the visitor scrolls.
+export const SCENE_THEMES = {
+  hero: { dust: '#cbd5e1', aurora: ['#0ea5e9', '#8b5cf6', '#06b6d4'] },
+  problem: { dust: '#fda4af', aurora: ['#fda4af', '#fcd34d', '#fecdd3'] },
+  services: { dust: '#93c5fd', aurora: ['#bae6fd', '#a5f3fc', '#c7d2fe'] },
+  workflow: { dust: '#c4b5fd', aurora: ['#c4b5fd', '#a5b4fc', '#ddd6fe'] },
+  pricing: { dust: '#6ee7b7', aurora: ['#a7f3d0', '#99f6e4', '#bbf7d0'] },
+  contact: { dust: '#a5f3fc', aurora: ['#a5f3fc', '#c4b5fd', '#bae6fd'] },
+} as const;

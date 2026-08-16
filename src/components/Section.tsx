@@ -4,16 +4,23 @@ import { ReactNode } from 'react';
 
 interface SectionProps {
   id?: string;
+  /** id for the global 3D scene (data-scene) */
+  scene?: string;
   children: ReactNode;
   className?: string;
   containerClass?: string;
 }
 
-export default function Section({ id, children, className = '', containerClass = '' }: SectionProps) {
+export default function Section({ id, scene, children, className = '', containerClass = '' }: SectionProps) {
   const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true });
 
   return (
-    <section id={id} ref={ref} className={`relative py-10 sm:py-14 md:py-18 ${className}`}>
+    <section
+      id={id}
+      data-scene={scene}
+      ref={ref}
+      className={`relative py-10 sm:py-14 md:py-18 ${className}`}
+    >
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
