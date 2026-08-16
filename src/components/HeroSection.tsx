@@ -1,13 +1,16 @@
-import { useEffect, useRef } from 'react';
-import { motion, type Variants } from 'framer-motion';
-import { BRAND, HERO_STATS, LINKS } from '../data/content';
+import { useEffect, useRef, useState } from 'react';
+import { AnimatePresence, motion, type Variants } from 'framer-motion';
+import { BRAND, HERO_STATS, LINKS, NICHES } from '../data/content';
 import { trackEvent } from '../utils/analytics';
+import CountUp from './CountUp';
 
 const PLATFORMS = [
   { icon: '📘', label: 'Meta Ads' },
   { icon: '🔍', label: 'Google Ads' },
   { icon: '📢', label: 'Telegram Ads' },
 ];
+
+const ROTATING_PLATFORMS = ['META', 'GOOGLE', 'TELEGRAM'];
 
 const container: Variants = {
   hidden: {},
@@ -18,6 +21,38 @@ const item: Variants = {
   hidden: { opacity: 0, y: 24 },
   show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
 };
+
+function RotatingWord() {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const id = window.setInterval(
+      () => setIndex(i => (i + 1) % ROTATING_PLATFORMS.length),
+      2600
+    );
+    return () => window.clearInterval(id);
+  }, []);
+
+  return (
+    <span
+      className="relative inline-block overflow-hidden text-center align-bottom"
+      style={{ minWidth: '4.9em' }}
+    >
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.span
+          key={ROTATING_PLATFORMS[index]}
+          initial={{ y: '115%', opacity: 0 }}
+          animate={{ y: '0%', opacity: 1 }}
+          exit={{ y: '-115%', opacity: 0 }}
+          transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
+          className="gradient-text inline-block whitespace-nowrap"
+        >
+          {ROTATING_PLATFORMS[index]}
+        </motion.span>
+      </AnimatePresence>
+    </span>
+  );
+}
 
 export default function HeroSection() {
   const raf = useRef(0);
@@ -53,7 +88,7 @@ export default function HeroSection() {
       <div className="hero-vignette" aria-hidden="true" />
       <div className="grain" aria-hidden="true" />
 
-      {/* Floating stat chips with depth parallax — solid dark glass, no backdrop blur (crisp text) */}
+      {/* Floating stat chips with depth parallax */}
       <div data-parallax="18" className="hidden lg:block absolute left-10 top-44 z-10 will-change-transform">
         <div className="chip-dark rounded-2xl px-4 py-3 flex items-center gap-3 float">
           <span className="text-2xl">📈</span>
@@ -87,14 +122,14 @@ export default function HeroSection() {
           </span>
         </motion.div>
 
-        {/* Headline */}
+        {/* Headline with rotating platform word */}
         <motion.h1
           variants={item}
           className="font-[var(--font-heading)] text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.05] tracking-tight [text-shadow:0_4px_32px_rgba(2,6,23,0.55)]"
         >
           WE SCALE BRANDS
           <br />
-          <span className="gradient-text">WITH PRECISION ADS</span>
+          WITH PRECISION <RotatingWord /> ADS
         </motion.h1>
 
         {/* Statement */}
@@ -111,7 +146,7 @@ export default function HeroSection() {
             onClick={() => trackEvent('telegram_click', { location: 'hero' })}
             className="btn-magnetic btn-3d btn-shine inline-flex items-center gap-2 px-7 py-3.5 rounded-2xl bg-gradient-to-r from-ice-500 via-cyan-glow to-violet-glow text-white text-sm font-bold shadow-lg shadow-ice-500/40 w-full sm:w-auto justify-center"
           >
-            🚀 START YOUR CAMPAIGN
+            🚀 START SCALING
           </a>
           <a
             href="#pricing"
@@ -132,15 +167,42 @@ export default function HeroSection() {
           ))}
         </motion.div>
 
-        {/* Stats */}
+        {/* Stats with animated counters */}
         <motion.div variants={item} className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 max-w-4xl mx-auto mt-12 sm:mt-16">
           {HERO_STATS.map(stat => (
             <div key={stat.label} className="chip-dark card-hover rounded-2xl px-4 py-5">
-              <p className="font-[var(--font-heading)] gradient-text text-2xl sm:text-3xl font-bold">{stat.value}</p>
+              <p className="font-[var(--font-heading)] gradient-text text-2xl sm:text-3xl font-bold">
+                <CountUp
+                  to={stat.value}
+                  decimals={stat.decimals}
+                  prefix={stat.prefix}
+                  suffix={stat.suffix}
+                />
+              </p>
               <p className="text-[10px] tracking-widest text-slate-300 font-semibold mt-1.5">{stat.label}</p>
             </div>
           ))}
         </motion.div>
+      </motion.div>
+
+      {/* Niche marquee — who we scale */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.6, duration: 0.8 }}
+        className="marquee marquee-mask relative z-10 mt-14 sm:mt-16 border-y border-white/10 bg-slate-950/40 py-4"
+      >
+        <div className="marquee-track">
+          {[...NICHES, ...NICHES].map((niche, i) => (
+            <span
+              key={i}
+              className="flex items-center gap-3 px-6 text-[11px] font-bold tracking-[0.22em] text-slate-300 whitespace-nowrap"
+            >
+              <span className="text-ice-400">✦</span>
+              {niche}
+            </span>
+          ))}
+        </div>
       </motion.div>
 
       {/* Scroll hint */}

@@ -1,6 +1,6 @@
 import Section from './Section';
 import TiltCard from './TiltCard';
-import { PROBLEMS } from '../data/content';
+import { PROBLEMS, STANDARD } from '../data/content';
 import { trackEvent } from '../utils/analytics';
 
 export default function ProblemSection() {
@@ -28,20 +28,36 @@ export default function ProblemSection() {
         ))}
       </div>
 
-      <div className="glass-card rounded-2xl p-6 sm:p-8 mt-6 text-center">
-        <p className="text-sm sm:text-base text-slate-600 max-w-2xl mx-auto leading-relaxed">
-          <span className="font-bold text-slate-900">The fix?</span> A dedicated media buyer managing your{' '}
-          <span className="font-semibold text-ice-600">Meta</span>, <span className="font-semibold text-ice-600">Google</span> and{' '}
-          <span className="font-semibold text-ice-600">Telegram</span> campaigns end-to-end — so you focus on your business,
-          not your ads dashboard.
-        </p>
-        <a
-          href="#services"
-          onClick={() => trackEvent('cta_click', { location: 'problem_section' })}
-          className="btn-magnetic btn-3d inline-flex items-center gap-2 mt-5 px-6 py-3 rounded-xl bg-slate-900 text-white text-xs font-bold"
-        >
-          SEE HOW WE WORK →
-        </a>
+      {/* The Adstele Standard — trust band */}
+      <div className="glass-card rounded-2xl p-6 sm:p-8 mt-6">
+        <div className="text-center mb-6">
+          <p className="text-[10px] font-bold tracking-[0.25em] text-ice-500">THE ADSTELE STANDARD</p>
+          <h3 className="font-[var(--font-heading)] text-lg sm:text-xl font-bold text-slate-900 mt-2">
+            WHAT YOU GET ON DAY ONE
+          </h3>
+        </div>
+
+        <div className="grid sm:grid-cols-3 gap-5">
+          {STANDARD.map(point => (
+            <div key={point.title} className="text-center sm:text-left">
+              <div className="w-10 h-10 mx-auto sm:mx-0 rounded-xl bg-gradient-to-br from-ice-500/10 to-violet-glow/10 border border-ice-200/60 flex items-center justify-center text-lg mb-3">
+                {point.icon}
+              </div>
+              <p className="text-xs font-bold text-slate-800">{point.title}</p>
+              <p className="text-xs text-slate-500 leading-relaxed mt-1.5">{point.description}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="text-center mt-7">
+          <a
+            href="#services"
+            onClick={() => trackEvent('cta_click', { location: 'problem_section' })}
+            className="btn-magnetic btn-3d inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-900 text-white text-xs font-bold"
+          >
+            SEE HOW WE WORK →
+          </a>
+        </div>
       </div>
     </Section>
   );
