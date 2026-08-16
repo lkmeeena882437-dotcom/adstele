@@ -164,3 +164,55 @@ export const DISCLAIMER = {
   marketing: 'We sell professional advertising management and web development services. Campaign performance depends on market demand, creative quality, offer strength, and platform algorithms. We do not guarantee specific sales, revenue, or ROAS.',
   financial: 'Our marketing services do not constitute financial or investment advice.',
 };
+
+export const HERO_STATS = [
+  { value: '4.8x', label: 'AVG. ROAS DELIVERED' },
+  { value: '120+', label: 'CAMPAIGNS LAUNCHED' },
+  { value: '₹2Cr+', label: 'AD SPEND MANAGED' },
+  { value: '24/7', label: 'MONITORING & SUPPORT' },
+];
+
+export const PROBLEMS = [
+  {
+    icon: '📉',
+    title: 'YOUR ADS HIT A CEILING',
+    description: 'You raise the budget but results stay flat. Winning campaigns need constant creative testing, bid work and fresh angles to keep scaling.',
+  },
+  {
+    icon: '💸',
+    title: 'BUDGET LEAKS EVERY DAY',
+    description: 'Wrong targeting and broken tracking burn money silently. Most self-managed accounts waste 30–40% of ad spend on clicks that never convert.',
+  },
+  {
+    icon: '⏰',
+    title: 'NO TIME TO OPTIMIZE',
+    description: 'Running a business is a full-time job. Daily monitoring, A/B tests and reports are another one — and that is where growth actually happens.',
+  },
+];
+
+export const WORKFLOW = [
+  {
+    step: '01',
+    icon: '🎯',
+    title: 'STRATEGY & AUDIT',
+    description: 'We audit your business, audience and competitors, then build a custom media plan around your goals.',
+  },
+  {
+    step: '02',
+    icon: '🚀',
+    title: 'SETUP & LAUNCH',
+    description: 'Pixels, conversion tracking and campaigns go live across Meta, Google and Telegram — handled end-to-end.',
+  },
+  {
+    step: '03',
+    icon: '⚙️',
+    title: 'DAILY OPTIMIZATION',
+    description: 'Bids, budgets, creatives and targeting are tuned every single day to squeeze out maximum performance.',
+  },
+  {
+    step: '04',
+    icon: '📈',
+    title: 'SCALE & REPORT',
+    description: 'Winning campaigns scale profitably. You get a clear monthly performance report in plain language.',
+  },
+];
