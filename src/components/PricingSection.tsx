@@ -5,11 +5,11 @@ import { trackEvent } from '../utils/analytics';
 
 export default function PricingSection() {
   return (
-    <Section id="pricing">
+    <Section id="pricing" scene="pricing">
       <div className="text-center mb-8 sm:mb-10">
-        <p className="text-xs font-semibold text-ice-500 tracking-widest mb-3">PRICING</p>
+        <p className="text-xs font-semibold text-emerald-500 tracking-widest mb-3">PRICING</p>
         <h2 className="font-[var(--font-heading)] text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-3">
-          SIMPLE PRICING, <span className="gradient-text">SERIOUS RESULTS</span>
+          SIMPLE PRICING, <span className="gradient-text-green">SERIOUS RESULTS</span>
         </h2>
         <p className="text-slate-500 max-w-2xl mx-auto text-sm px-2">
           No hidden fees. Ad spend is billed directly by the platform — you only pay our management fee.
@@ -60,10 +60,10 @@ export default function PricingSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackEvent('pricing_click', { plan: plan.id, price: plan.price })}
-                className={`btn-magnetic mt-auto inline-flex items-center justify-center gap-2 w-full px-4 py-3 rounded-xl text-xs font-bold ${
+                className={`btn-magnetic btn-3d ${plan.highlight ? 'btn-shine' : ''} mt-auto inline-flex items-center justify-center gap-2 w-full px-4 py-3 rounded-xl text-xs font-bold ${
                   plan.highlight
                     ? 'bg-gradient-to-r from-ice-500 to-violet-glow text-white'
-                    : 'border border-slate-200 text-slate-800 hover:border-ice-400 hover:text-ice-600'
+                    : 'bg-slate-900 text-white'
                 }`}
               >
                 {plan.cta}

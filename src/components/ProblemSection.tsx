@@ -5,11 +5,11 @@ import { trackEvent } from '../utils/analytics';
 
 export default function ProblemSection() {
   return (
-    <Section id="platform">
+    <Section id="platform" scene="problem">
       <div className="text-center mb-8 sm:mb-10">
-        <p className="text-xs font-semibold text-ice-500 tracking-widest mb-3">THE PROBLEM</p>
+        <p className="text-xs font-semibold text-rose-500 tracking-widest mb-3">THE PROBLEM</p>
         <h2 className="font-[var(--font-heading)] text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-3">
-          RUNNING ADS ALONE IS <span className="gradient-text">SLOW & EXPENSIVE</span>
+          RUNNING ADS ALONE IS <span className="gradient-text-rose">SLOW & EXPENSIVE</span>
         </h2>
         <p className="text-slate-500 max-w-2xl mx-auto text-sm px-2">
           Most businesses lose money on ads not because the platform is bad — but because no one is optimizing daily. Here's what is actually draining your budget:
@@ -19,7 +19,7 @@ export default function ProblemSection() {
       <div className="grid md:grid-cols-3 gap-4 sm:gap-5">
         {PROBLEMS.map(problem => (
           <TiltCard key={problem.title} className="glass-card glow-border rounded-2xl p-6">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-ice-500/10 to-violet-glow/10 border border-ice-200/60 flex items-center justify-center text-2xl mb-4">
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-rose-500/10 to-amber-500/10 border border-rose-200/70 flex items-center justify-center text-2xl mb-4">
               {problem.icon}
             </div>
             <h3 className="font-[var(--font-heading)] text-sm font-bold text-slate-900">{problem.title}</h3>
@@ -38,7 +38,7 @@ export default function ProblemSection() {
         <a
           href="#services"
           onClick={() => trackEvent('cta_click', { location: 'problem_section' })}
-          className="btn-magnetic inline-flex items-center gap-2 mt-5 px-6 py-3 rounded-xl bg-slate-900 text-white text-xs font-bold"
+          className="btn-magnetic btn-3d inline-flex items-center gap-2 mt-5 px-6 py-3 rounded-xl bg-slate-900 text-white text-xs font-bold"
         >
           SEE HOW WE WORK →
         </a>

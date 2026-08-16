@@ -60,7 +60,7 @@ export default function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackEvent('telegram_click', { location: 'navbar' })}
-              className="btn-magnetic hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-ice-500 via-cyan-glow to-violet-glow text-white text-xs font-bold shadow-lg shadow-ice-500/30"
+              className="btn-magnetic btn-3d btn-shine hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-ice-500 via-cyan-glow to-violet-glow text-white text-xs font-bold shadow-lg shadow-ice-500/30"
             >
               💬 TALK TO US
             </a>
@@ -111,7 +111,7 @@ export default function Navbar() {
                   setOpen(false);
                   trackEvent('telegram_click', { location: 'mobile_menu' });
                 }}
-                className="btn-magnetic mt-2 flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-gradient-to-r from-ice-500 via-cyan-glow to-violet-glow text-white text-sm font-bold"
+                className="btn-magnetic btn-3d btn-shine mt-2 flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-gradient-to-r from-ice-500 via-cyan-glow to-violet-glow text-white text-sm font-bold"
               >
                 💬 TALK TO US ON TELEGRAM
               </a>

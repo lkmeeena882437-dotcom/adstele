@@ -3,11 +3,11 @@ import { WORKFLOW } from '../data/content';
 
 export default function AutomationWorkflow() {
   return (
-    <Section id="workflow">
+    <Section id="workflow" scene="workflow">
       <div className="text-center mb-8 sm:mb-12">
-        <p className="text-xs font-semibold text-ice-500 tracking-widest mb-3">OUR PROCESS</p>
+        <p className="text-xs font-semibold text-violet-500 tracking-widest mb-3">OUR PROCESS</p>
         <h2 className="font-[var(--font-heading)] text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-3">
-          AUTOMATED WORKFLOW, <span className="gradient-text">HUMAN PRECISION</span>
+          AUTOMATED WORKFLOW, <span className="gradient-text-violet">HUMAN PRECISION</span>
         </h2>
         <p className="text-slate-500 max-w-2xl mx-auto text-sm px-2">
           A proven four-step system that takes your campaign from strategy to profit — with zero effort from your side.
@@ -17,7 +17,7 @@ export default function AutomationWorkflow() {
       <div className="relative">
         {/* Animated dashed connector line (desktop) */}
         <svg
-          className="hidden md:block absolute top-[3.7rem] left-[12.5%] w-[75%] h-4"
+          className="hidden md:block absolute top-[4.7rem] left-[12.5%] w-[75%] h-4"
           preserveAspectRatio="none"
           viewBox="0 0 100 4"
           aria-hidden="true"
@@ -46,9 +46,15 @@ export default function AutomationWorkflow() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-6 relative">
           {WORKFLOW.map(step => (
             <div key={step.step} className="text-center">
-              <p className="text-[10px] font-bold tracking-[0.25em] text-ice-500 mb-3">STEP {step.step}</p>
-              <div className="node-glow w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-ice-500 via-cyan-glow to-violet-glow flex items-center justify-center text-2xl shadow-lg shadow-ice-500/20">
-                {step.icon}
+              <p className="text-[10px] font-bold tracking-[0.25em] text-violet-500 mb-4">STEP {step.step}</p>
+              {/* CSS 3D cube — rotates on its Y axis, zero WebGL cost */}
+              <div className="cube-scene w-16 h-16 mx-auto">
+                <div className="cube">
+                  <div className="cube-face cube-front">{step.icon}</div>
+                  <div className="cube-face cube-back">{step.icon}</div>
+                  <div className="cube-face cube-right">{step.icon}</div>
+                  <div className="cube-face cube-left">{step.icon}</div>
+                </div>
               </div>
               <h3 className="font-[var(--font-heading)] text-sm font-bold text-slate-900 mt-4">{step.title}</h3>
               <p className="text-xs text-slate-500 leading-relaxed mt-2 max-w-[260px] mx-auto">{step.description}</p>

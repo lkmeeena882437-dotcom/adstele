@@ -26,7 +26,7 @@ export default function MobileStickyCTA() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => trackEvent('telegram_click', { location: 'mobile_sticky' })}
-            className="btn-magnetic flex items-center justify-center gap-2 w-full px-4 py-3.5 bg-slate-900 text-white rounded-2xl text-sm font-semibold shadow-xl text-center"
+            className="btn-magnetic btn-3d btn-shine flex items-center justify-center gap-2 w-full px-4 py-3.5 bg-gradient-to-r from-ice-500 via-cyan-glow to-violet-glow text-white rounded-2xl text-sm font-semibold shadow-xl text-center"
           >
             💬 TALK TO OUR TEAM
           </a>

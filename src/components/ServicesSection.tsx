@@ -5,7 +5,7 @@ import { trackEvent } from '../utils/analytics';
 
 export default function ServicesSection() {
   return (
-    <Section id="services">
+    <Section id="services" scene="services">
       <div className="text-center mb-8 sm:mb-10">
         <p className="text-xs font-semibold text-ice-500 tracking-widest mb-3">SERVICES</p>
         <h2 className="font-[var(--font-heading)] text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-3">

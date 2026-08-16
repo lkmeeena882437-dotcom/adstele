@@ -216,3 +216,14 @@ export const WORKFLOW = [
     description: 'Winning campaigns scale profitably. You get a clear monthly performance report in plain language.',
   },
 ];
+
+// Per-section 3D visual identity — drives the global scene palette,
+// aurora glow colors and particle tints as the visitor scrolls.
+export const SCENE_THEMES = {
+  hero: { dust: '#cbd5e1', aurora: ['#0ea5e9', '#8b5cf6', '#06b6d4'] },
+  problem: { dust: '#fda4af', aurora: ['#fda4af', '#fcd34d', '#fecdd3'] },
+  services: { dust: '#93c5fd', aurora: ['#bae6fd', '#a5f3fc', '#c7d2fe'] },
+  workflow: { dust: '#c4b5fd', aurora: ['#c4b5fd', '#a5b4fc', '#ddd6fe'] },
+  pricing: { dust: '#6ee7b7', aurora: ['#a7f3d0', '#99f6e4', '#bbf7d0'] },
+  contact: { dust: '#a5f3fc', aurora: ['#a5f3fc', '#c4b5fd', '#bae6fd'] },
+} as const;

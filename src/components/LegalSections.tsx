@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FAQS, REFUND_POLICY, DISCLAIMER } from '../data/content';
+import TiltCard from './TiltCard';
 
 function Accordion({ title, children }: { title: string; children: React.ReactNode }) {
   const [open, setOpen] = useState(false);
@@ -44,7 +45,8 @@ export default function LegalSections() {
     <div id="faq" className="max-w-3xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
       
       {/* FAQ */}
-      <div className="glass-card rounded-2xl p-5 sm:p-8 mb-4">
+      <TiltCard max={3} className="mb-4">
+      <div className="glass-card rounded-2xl p-5 sm:p-8 h-full">
         <h3 className="font-[var(--font-heading)] text-lg font-bold text-slate-800 mb-2">FREQUENTLY ASKED QUESTIONS</h3>
         <div className="divide-y divide-slate-100">
           {FAQS.map((faq, i) => (
@@ -54,33 +56,42 @@ export default function LegalSections() {
           ))}
         </div>
       </div>
+      </TiltCard>
 
       {/* Refund Policy */}
-      <div id="refund" className="glass-card rounded-2xl p-5 sm:p-8 mb-4">
+      <TiltCard max={3} className="mb-4">
+      <div id="refund" className="glass-card rounded-2xl p-5 sm:p-8 h-full">
         <h3 className="font-[var(--font-heading)] text-lg font-bold text-slate-800 mb-3">{REFUND_POLICY.title}</h3>
         <p className="text-sm text-slate-500 leading-relaxed">{REFUND_POLICY.content}</p>
       </div>
+      </TiltCard>
 
       {/* Disclaimer */}
-      <div id="disclaimer" className="glass-card rounded-2xl p-5 sm:p-8 mb-4">
+      <TiltCard max={3} className="mb-4">
+      <div id="disclaimer" className="glass-card rounded-2xl p-5 sm:p-8 h-full">
         <h3 className="font-[var(--font-heading)] text-lg font-bold text-slate-800 mb-3">DISCLAIMER</h3>
         <p className="text-sm text-slate-500 leading-relaxed mb-3">{DISCLAIMER.marketing}</p>
         <p className="text-sm text-slate-500 leading-relaxed">{DISCLAIMER.financial}</p>
       </div>
+      </TiltCard>
 
       {/* Terms */}
-      <div id="terms" className="glass-card rounded-2xl p-5 sm:p-8 mb-4">
+      <TiltCard max={3} className="mb-4">
+      <div id="terms" className="glass-card rounded-2xl p-5 sm:p-8 h-full">
         <Accordion title="TERMS OF SERVICE">
           We provide paid advertising management and web development services. By engaging Adstele Agency, you agree to the selected service scope and deliverables. Campaign outcomes are not guaranteed. Payments are non-refundable once work has commenced per our Refund Policy.
         </Accordion>
       </div>
+      </TiltCard>
 
       {/* Privacy */}
-      <div id="privacy" className="glass-card rounded-2xl p-5 sm:p-8">
+      <TiltCard max={3}>
+      <div id="privacy" className="glass-card rounded-2xl p-5 sm:p-8 h-full">
         <Accordion title="PRIVACY POLICY">
           We collect only the information needed to provide our services: name, contact details, and project requirements. We do not sell personal data. You may request deletion of your data at any time via Telegram.
         </Accordion>
       </div>
+      </TiltCard>
     </div>
   );
 }
