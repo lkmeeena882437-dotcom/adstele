@@ -1,4 +1,5 @@
 import Section from './Section';
+import TiltCard from './TiltCard';
 import { SERVICES } from '../data/content';
 import { trackEvent } from '../utils/analytics';
 
@@ -17,7 +18,7 @@ export default function ServicesSection() {
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
         {SERVICES.map(service => (
-          <div key={service.id} className="glass-card card-hover glow-border rounded-2xl p-6 flex flex-col">
+          <TiltCard key={service.id} className="glass-card glow-border rounded-2xl p-6 flex flex-col">
             <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-ice-500/10 to-violet-glow/10 border border-ice-200/60 flex items-center justify-center text-2xl mb-4">
               {service.icon}
             </div>
@@ -41,7 +42,7 @@ export default function ServicesSection() {
             >
               SEE PRICING →
             </a>
-          </div>
+          </TiltCard>
         ))}
       </div>
     </Section>

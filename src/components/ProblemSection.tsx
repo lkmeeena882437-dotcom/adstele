@@ -1,4 +1,5 @@
 import Section from './Section';
+import TiltCard from './TiltCard';
 import { PROBLEMS } from '../data/content';
 import { trackEvent } from '../utils/analytics';
 
@@ -17,13 +18,13 @@ export default function ProblemSection() {
 
       <div className="grid md:grid-cols-3 gap-4 sm:gap-5">
         {PROBLEMS.map(problem => (
-          <div key={problem.title} className="glass-card card-hover glow-border rounded-2xl p-6">
+          <TiltCard key={problem.title} className="glass-card glow-border rounded-2xl p-6">
             <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-ice-500/10 to-violet-glow/10 border border-ice-200/60 flex items-center justify-center text-2xl mb-4">
               {problem.icon}
             </div>
             <h3 className="font-[var(--font-heading)] text-sm font-bold text-slate-900">{problem.title}</h3>
             <p className="text-xs text-slate-500 leading-relaxed mt-2">{problem.description}</p>
-          </div>
+          </TiltCard>
         ))}
       </div>
 
