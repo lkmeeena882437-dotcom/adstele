@@ -4,15 +4,27 @@ import Kicker from './Kicker';
 import { WordReveal } from './Reveal';
 import { TESTIMONIALS } from '../data/content';
 
+function RatingStars() {
+  return (
+    <span className="my-4 flex gap-1 text-amber-400" role="img" aria-label="5 out of 5 stars">
+      {Array.from({ length: 5 }, (_, index) => (
+        <svg key={index} width="13" height="13" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path d="m10 1.7 2.45 4.96 5.47.8-3.96 3.85.94 5.45L10 14.2l-4.9 2.57.94-5.45-3.96-3.85 5.47-.8L10 1.7Z" />
+        </svg>
+      ))}
+    </span>
+  );
+}
+
 export default function TestimonialsSection() {
   return (
     <Section id="results" scene="testimonials" ghost="06">
       <header className="section-header">
         <Kicker className="text-amber-600">CLIENT RESULTS</Kicker>
         <h2 className="h-section font-heading text-slate-900">
-          <WordReveal solidClassName="headline-3d">REAL BUSINESSES, <span className="gradient-text-amber">REAL GROWTH</span></WordReveal>
+          <WordReveal solidClassName="headline-3d">THE METRICS BEHIND <span className="gradient-text-amber">STRONGER GROWTH.</span></WordReveal>
         </h2>
-        <p>Live numbers from client campaigns — not promises. This is what daily optimization does to a budget.</p>
+        <p>Return, lead cost, conversions and pipeline — the numbers that guide every decision we make.</p>
       </header>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -22,7 +34,7 @@ export default function TestimonialsSection() {
             <TiltCard key={item.name} className={`rounded-2xl p-6 flex flex-col ${item.featured ? 'bg-slate-900 text-white shadow-2xl shadow-amber-400/10' : 'glass-card'} ${index % 3 === 1 ? 'lg:translate-y-6' : ''}`}>
               <p className={`font-heading text-2xl font-bold ${item.featured ? 'text-amber-300' : 'gradient-text-amber'}`}>{item.metric}</p>
               <p className={`font-mono text-[9px] tracking-[.2em] mt-1 ${item.featured ? 'text-amber-200/70' : 'text-amber-700'}`}>{item.metricLabel}</p>
-              <p className="text-amber-400 tracking-[.12em] text-xs my-4" aria-label="5 out of 5 stars">★★★★★</p>
+              <RatingStars />
               <blockquote className={`text-[13px] leading-relaxed flex-1 ${item.featured ? 'text-slate-300' : 'text-slate-600'}`}>“{item.quote}”</blockquote>
               <div className="flex items-center gap-3 mt-5 pt-5 border-t border-slate-400/15">
                 <span className="w-9 h-9 rounded-full grid place-items-center bg-gradient-to-br from-amber-400 to-rose-500 text-white font-bold text-[10px]">{initials}</span>

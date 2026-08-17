@@ -11,7 +11,14 @@ export default function TiltCard({ children, className = '', max = 6 }: TiltCard
 
   useEffect(() => {
     const el = ref.current;
-    if (!el || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const canTilt = window.matchMedia('(hover: hover) and (pointer: fine)').matches
+      && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!el || !canTilt) return;
+    let settleTimer = 0;
+    const onEnter = () => {
+      window.clearTimeout(settleTimer);
+      el.style.willChange = 'transform';
+    };
     const onMove = (event: MouseEvent) => {
       const rect = el.getBoundingClientRect();
       const x = event.clientX - rect.left;
@@ -26,17 +33,21 @@ export default function TiltCard({ children, className = '', max = 6 }: TiltCard
     const onLeave = () => {
       el.style.transition = 'transform 600ms cubic-bezier(0.22,1,0.36,1)';
       el.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg) translateY(0)';
+      settleTimer = window.setTimeout(() => { el.style.willChange = 'auto'; }, 650);
     };
+    el.addEventListener('mouseenter', onEnter);
     el.addEventListener('mousemove', onMove);
     el.addEventListener('mouseleave', onLeave);
     return () => {
+      window.clearTimeout(settleTimer);
+      el.removeEventListener('mouseenter', onEnter);
       el.removeEventListener('mousemove', onMove);
       el.removeEventListener('mouseleave', onLeave);
     };
   }, [max]);
 
   return (
-    <div ref={ref} className={`spotlight-card ${className}`} style={{ transformStyle: 'preserve-3d', willChange: 'transform' }}>
+    <div ref={ref} className={`spotlight-card ${className}`} style={{ transformStyle: 'preserve-3d' }}>
       {children}
     </div>
   );

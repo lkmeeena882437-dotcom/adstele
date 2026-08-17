@@ -425,13 +425,17 @@ function Scene({ store }: { store: SceneStore }) {
       <StarField mobile={mobile} />
       {!mobile && <ScrollRibbon store={store} />}
       <HeroRig store={store} mobile={mobile} />
-      <AccentRig id="problem" store={store} mobile={mobile} anchor={[2.7, 0.2]}><ShatterField /></AccentRig>
-      <AccentRig id="services" store={store} mobile={mobile} anchor={[-2.9, 0.8]}><PlatformCity /></AccentRig>
-      <AccentRig id="workflow" store={store} mobile={mobile} anchor={[2.6, -0.2]}><RocketPath /></AccentRig>
-      <AccentRig id="compare" store={store} mobile={mobile} anchor={[-2.8, 0.2]}><ArenaScene /></AccentRig>
-      <AccentRig id="pricing" store={store} mobile={mobile} anchor={[2.7, -0.1]}><CoinStacks /></AccentRig>
-      <AccentRig id="testimonials" store={store} mobile={mobile} anchor={[-2.8, 0.25]}><GoldenOrbit /></AccentRig>
-      <AccentRig id="contact" store={store} mobile={mobile} anchor={[2.6, 0.5]}><RadarScene /></AccentRig>
+      {!mobile && (
+        <>
+          <AccentRig id="problem" store={store} mobile={false} anchor={[2.7, 0.2]}><ShatterField /></AccentRig>
+          <AccentRig id="services" store={store} mobile={false} anchor={[-2.9, 0.8]}><PlatformCity /></AccentRig>
+          <AccentRig id="workflow" store={store} mobile={false} anchor={[2.6, -0.2]}><RocketPath /></AccentRig>
+          <AccentRig id="compare" store={store} mobile={false} anchor={[-2.8, 0.2]}><ArenaScene /></AccentRig>
+          <AccentRig id="pricing" store={store} mobile={false} anchor={[2.7, -0.1]}><CoinStacks /></AccentRig>
+          <AccentRig id="testimonials" store={store} mobile={false} anchor={[-2.8, 0.25]}><GoldenOrbit /></AccentRig>
+          <AccentRig id="contact" store={store} mobile={false} anchor={[2.6, 0.5]}><RadarScene /></AccentRig>
+        </>
+      )}
     </>
   );
 }
@@ -452,6 +456,8 @@ export default function GlobalScene() {
   useEffect(() => {
     let lastY = window.scrollY;
     let lastTime = performance.now();
+    let frame = 0;
+    const sections = Array.from(document.querySelectorAll<HTMLElement>('[data-scene]'));
     const update = () => {
       const now = performance.now();
       const scrollY = window.scrollY;
@@ -466,7 +472,7 @@ export default function GlobalScene() {
       store.heroProgress = clamp01(1 - scrollY / (vh * 0.75));
       let active: SceneKey = 'hero';
       let highest = store.heroProgress;
-      document.querySelectorAll<HTMLElement>('[data-scene]').forEach(element => {
+      sections.forEach(element => {
         const id = element.dataset.scene as SceneKey;
         if (!id || id === 'hero' || !SCENE_IDS.includes(id)) return;
         const rect = element.getBoundingClientRect();
@@ -481,27 +487,40 @@ export default function GlobalScene() {
       lastY = scrollY;
       lastTime = now;
     };
+    const scheduleUpdate = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        update();
+      });
+    };
     const pointer = (event: PointerEvent) => {
       store.pointer.x = event.clientX / window.innerWidth - 0.5;
       store.pointer.y = event.clientY / window.innerHeight - 0.5;
     };
+    const finePointer = window.matchMedia('(pointer: fine)').matches
+      && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     update();
-    window.addEventListener('scroll', update, { passive: true });
-    window.addEventListener('resize', update);
-    window.addEventListener('pointermove', pointer, { passive: true });
+    window.addEventListener('scroll', scheduleUpdate, { passive: true });
+    window.addEventListener('resize', scheduleUpdate);
+    if (finePointer) window.addEventListener('pointermove', pointer, { passive: true });
     return () => {
-      window.removeEventListener('scroll', update);
-      window.removeEventListener('resize', update);
-      window.removeEventListener('pointermove', pointer);
+      window.removeEventListener('scroll', scheduleUpdate);
+      window.removeEventListener('resize', scheduleUpdate);
+      if (finePointer) window.removeEventListener('pointermove', pointer);
+      cancelAnimationFrame(frame);
     };
   }, [store]);
 
+  const mobile = window.matchMedia('(max-width: 767px)').matches;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   return (
     <Canvas
-      dpr={[1, 1.5]}
+      frameloop={reducedMotion ? 'demand' : 'always'}
+      dpr={mobile ? 1 : [1, 1.5]}
       camera={{ position: [0, 0, 10.7], fov: 50 }}
       performance={{ min: 0.5 }}
-      gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
+      gl={{ antialias: !mobile, alpha: true, powerPreference: 'high-performance' }}
       style={{ position: 'absolute', inset: 0 }}
     >
       <Scene store={store} />

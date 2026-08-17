@@ -5,6 +5,7 @@ import Kicker from './Kicker';
 import { WordReveal } from './Reveal';
 import { LINKS, PRICING } from '../data/content';
 import { trackEvent } from '../utils/analytics';
+import CheckIcon from './CheckIcon';
 
 export default function PricingSection() {
   return (
@@ -12,7 +13,7 @@ export default function PricingSection() {
       <header className="section-header">
         <Kicker className="text-emerald-600">PRICING</Kicker>
         <h2 className="h-section font-heading text-slate-900">
-          <WordReveal solidClassName="headline-3d">SIMPLE PRICING. <span className="gradient-text-green">MASSIVE RETURNS.</span></WordReveal>
+          <WordReveal solidClassName="headline-3d">CLEAR PRICING. <span className="gradient-text-green">EXPERT MANAGEMENT.</span></WordReveal>
         </h2>
         <p>No hidden fees. Your ad spend goes to the platform; your fee puts experts on the campaign every day.</p>
       </header>
@@ -27,7 +28,7 @@ export default function PricingSection() {
               <div className="mt-4 mb-1"><span className="font-heading text-3xl font-bold">{plan.price}</span><span className={`font-mono text-[10px] ${plan.highlight ? 'text-slate-300' : 'text-slate-400'}`}>{plan.period}</span></div>
               <p className={`text-xs leading-relaxed mb-4 ${plan.highlight ? 'text-slate-300' : 'text-slate-500'}`}>{plan.description}</p>
               <ul className="space-y-2.5 mb-6 flex-1">
-                {plan.features.map(feature => <li key={feature} className="flex items-start gap-2 text-xs"><span className={plan.highlight ? 'text-mint-glow' : 'text-ice-500'}>✓</span><span className={plan.highlight ? 'text-slate-200' : 'text-slate-600'}>{feature}</span></li>)}
+                {plan.features.map(feature => <li key={feature} className="flex items-start gap-2 text-xs"><CheckIcon className={plan.highlight ? 'text-mint-glow' : 'text-ice-500'} /><span className={plan.highlight ? 'text-slate-200' : 'text-slate-600'}>{feature}</span></li>)}
               </ul>
               <a
                 href={LINKS.telegramSupport} target="_blank" rel="noopener noreferrer" data-cursor="START"
@@ -38,7 +39,7 @@ export default function PricingSection() {
           </div>
         ))}
       </div>
-      <p className="flex items-center justify-center gap-2 text-center text-[11px] text-slate-400 mt-8"><Sticker emoji="💡" size="sm" tilt={-7} /> Ad spend is paid directly to the platform — our fee covers strategy, setup, daily management & reports.</p>
+      <p className="flex items-center justify-center gap-2 text-center text-[11px] text-slate-400 mt-8"><Sticker icon="idea" size="sm" tilt={-7} /> Ad spend is paid directly to the platform — our fee covers strategy, setup, daily management & reports.</p>
     </Section>
   );
 }

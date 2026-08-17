@@ -10,9 +10,9 @@ export default function AutomationWorkflow() {
       <header className="section-header">
         <Kicker className="text-violet-600">OUR PROCESS</Kicker>
         <h2 className="h-section font-heading text-slate-900">
-          <WordReveal solidClassName="headline-3d">AUTOMATED WORKFLOW, <span className="gradient-text-violet">HUMAN PRECISION</span></WordReveal>
+          <WordReveal solidClassName="headline-3d">FROM STRATEGY TO SCALE, <span className="gradient-text-violet">MADE SIMPLE</span></WordReveal>
         </h2>
-        <p>Four steps. One proven system. Your campaign goes from strategy to profit — zero effort from your side.</p>
+        <p>Four clear steps take your campaign from first audit to daily optimization and responsible scaling.</p>
       </header>
 
       <div className="relative">
@@ -27,7 +27,7 @@ export default function AutomationWorkflow() {
               <div className="cube-scene w-16 h-16 mx-auto">
                 <div className="cube">
                   {['front', 'back', 'right', 'left'].map(face => (
-                    <div key={face} className={`cube-face cube-${face}`}><Sticker emoji={step.icon} size="md" tilt={index * 4 - 5} /></div>
+                    <div key={face} className={`cube-face cube-${face}`}><Sticker icon={step.icon} size="md" tilt={index * 4 - 5} /></div>
                   ))}
                 </div>
               </div>

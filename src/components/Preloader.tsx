@@ -1,14 +1,24 @@
 import { useEffect, useState } from 'react';
 import { AnimatePresence, m } from 'framer-motion';
+import BrandLogo from './BrandLogo';
 
 export default function Preloader() {
   const [visible, setVisible] = useState(true);
   useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let seen = false;
+    try {
+      seen = window.sessionStorage.getItem('adstele-preloader') === 'seen';
+      window.sessionStorage.setItem('adstele-preloader', 'seen');
+    } catch {
+      // Storage can be unavailable in strict privacy modes; the loader still works.
+    }
+    if (reduced || seen) {
       setVisible(false);
       return;
     }
-    const timer = window.setTimeout(() => setVisible(false), 1200);
+    const mobile = window.matchMedia('(pointer: coarse)').matches;
+    const timer = window.setTimeout(() => setVisible(false), mobile ? 700 : 1100);
     return () => window.clearTimeout(timer);
   }, []);
 
@@ -23,7 +33,7 @@ export default function Preloader() {
         >
           <div className="preloader-mark">
             <span className="preloader-ring" />
-            <span className="preloader-a">A</span>
+            <BrandLogo className="w-14 h-14" />
           </div>
           <p>ADSTELE</p>
           <span className="preloader-bar"><span /></span>

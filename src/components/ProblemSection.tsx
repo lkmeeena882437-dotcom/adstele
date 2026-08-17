@@ -11,7 +11,7 @@ export default function ProblemSection() {
       <header className="section-header">
         <Kicker className="text-rose-500">THE PROBLEM</Kicker>
         <h2 className="h-section font-heading text-slate-900">
-          <WordReveal solidClassName="headline-3d">STOP <span className="gradient-text-rose">BURNING MONEY</span> ON ADS</WordReveal>
+          <WordReveal solidClassName="headline-3d">FIX THE LEAK IN YOUR <span className="gradient-text-rose">AD SPEND</span></WordReveal>
         </h2>
         <p>Every day without expert optimization, your budget leaks. Here&apos;s exactly where the money goes:</p>
       </header>
@@ -19,7 +19,7 @@ export default function ProblemSection() {
       <div className="grid md:grid-cols-3 gap-4 sm:gap-5">
         {PROBLEMS.map((problem, index) => (
           <TiltCard key={problem.title} className="glass-card glow-border rounded-2xl p-6">
-            <Sticker emoji={problem.icon} size="lg" tilt={index * 7 - 8} float />
+            <Sticker icon={problem.icon} size="lg" tilt={index * 7 - 8} float />
             <h3 className="font-heading text-sm font-bold text-slate-900 mt-5">{problem.title}</h3>
             <p className="text-xs text-slate-500 leading-relaxed mt-2">{problem.description}</p>
           </TiltCard>
@@ -36,7 +36,7 @@ export default function ProblemSection() {
         <div className="grid sm:grid-cols-3 gap-6">
           {STANDARD.map((point, index) => (
             <div key={point.title} className="text-center sm:text-left">
-              <Sticker emoji={point.icon} size="md" tilt={index * 7 - 6} />
+              <Sticker icon={point.icon} size="md" tilt={index * 7 - 6} />
               <p className="text-xs font-bold text-slate-800 mt-4">{point.title}</p>
               <p className="text-xs text-slate-500 leading-relaxed mt-1.5">{point.description}</p>
             </div>

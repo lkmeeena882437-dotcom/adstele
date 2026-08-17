@@ -5,7 +5,7 @@ export const BRAND = {
   name: 'Adstele Agency',
   tagline: 'Premium Performance Marketing',
   supportingLine: 'META ADS • GOOGLE ADS • TELEGRAM ADS',
-  statement: 'Done-for-you ads on Meta, Google & Telegram. We plan, launch and scale — you watch the numbers climb. Zero dashboard stress.',
+  statement: 'We plan, launch and optimize your Meta, Google and Telegram ads — so you get clear results without living inside an ad dashboard.',
   copyright: '© 2026 J.B GOUTTAM. All rights reserved.',
 };
 
@@ -28,31 +28,31 @@ export const NAV_ITEMS = [
 
 export const SERVICES = [
   {
-    id: 'meta-ads', icon: '📘', title: 'META ADS MANAGEMENT', subtitle: 'Facebook & Instagram Advertising',
-    description: 'Full-funnel Facebook & Instagram campaigns — researched, launched and scaled every single day.',
+    id: 'meta-ads', icon: 'meta', title: 'META ADS MANAGEMENT', subtitle: 'Facebook & Instagram Advertising',
+    description: 'We research, launch and improve Facebook and Instagram campaigns every day.',
     details: ['Audience research & targeting', 'Pixel & CAPI setup', 'Daily campaign monitoring', 'Budget scaling strategy', 'Monthly performance reporting'],
   },
   {
-    id: 'google-ads', icon: '🔍', title: 'GOOGLE ADS MANAGEMENT', subtitle: 'Search, Display & YouTube Ads',
-    description: 'Capture ready-to-buy search traffic with precise keywords, bids and bulletproof tracking.',
+    id: 'google-ads', icon: 'search', title: 'GOOGLE ADS MANAGEMENT', subtitle: 'Search, Display & YouTube Ads',
+    description: 'Reach people already searching for your offer with focused keywords, bids and reliable tracking.',
     details: ['Keyword research & strategy', 'Search & display campaigns', 'Conversion tracking setup', 'Bid & budget optimization', 'Monthly performance reporting'],
   },
   {
-    id: 'telegram-ads', icon: '📢', title: 'TELEGRAM ADS', subtitle: 'Direct Telegram Marketing',
-    description: 'Own attention inside engaged Telegram communities — TON Ads and direct placements.',
+    id: 'telegram-ads', icon: 'broadcast', title: 'TELEGRAM ADS', subtitle: 'Direct Telegram Marketing',
+    description: 'Reach active Telegram communities through TON Ads and carefully chosen direct placements.',
     details: ['Campaign strategy', 'TON Ads management', 'Channel rank optimization', 'Audience targeting', 'Direct placements'],
   },
   {
-    id: 'website', icon: '🖥️', title: 'HIGH-CONVERTING WEBSITES', subtitle: 'Web & Landing Page Development',
-    description: 'Lightning-fast pages engineered to turn every ad click into a customer.',
+    id: 'website', icon: 'monitor', title: 'HIGH-CONVERTING WEBSITES', subtitle: 'Web & Landing Page Development',
+    description: 'Fast, focused pages built to turn more ad clicks into enquiries and sales.',
     details: ['Business websites', 'Landing pages for ad campaigns', 'Mobile-responsive design', 'Fast, modern builds', 'Conversion rate optimization (CRO)'],
   },
   {
-    id: 'creative', icon: '🎨', title: 'AD CREATIVE DESIGN', subtitle: 'Performance Visuals',
-    description: 'Scroll-stopping visuals, A/B tested until we find the angle that wins.',
+    id: 'creative', icon: 'creative', title: 'AD CREATIVE DESIGN', subtitle: 'Performance Visuals',
+    description: 'Clear, on-brand ad visuals tested to find the messages your audience responds to.',
     details: ['Static ad creatives', 'Short-form ad videos', 'A/B creative testing', 'Brand-consistent design', 'Platform-optimized formats'],
   },
-];
+] as const;
 
 export const PRICING = [
   {
@@ -87,14 +87,14 @@ export const FAQS = [
   { q: 'How much does Google Ads management cost?', a: 'Google Ads management is ₹3,599 per month, covering Search, Display, YouTube, conversion tracking, and ongoing optimization.' },
   { q: 'How much does Telegram Ads cost?', a: 'Our Telegram Ads package is a one-time ₹14,999, which covers end-to-end setup, targeting, creative, and launch of your campaign.' },
   { q: 'Do you build websites or landing pages?', a: 'Yes. We build premium, fast-loading websites and landing pages optimized to convert your ad traffic. Pricing is custom based on your exact needs.' },
-  { q: 'Do you guarantee ROAS or specific results?', a: 'No professional agency can guarantee specific financial returns due to market variables, product quality, and platform changes. We guarantee expert, data-driven management to give you the highest possible chance of success.' },
+  { q: 'Do you guarantee ROAS or specific results?', a: 'No. Results depend on your offer, market, budget and platform conditions. We provide careful, data-led management and clear reporting.' },
   { q: 'Who manages my campaigns?', a: 'A dedicated, experienced media buyer from our team will manage your account and monitor your campaigns daily.' },
   { q: 'How do I start?', a: 'Click the “Talk to Us” button to message us on Telegram. Tell us about your business and goals, and we will set up your campaigns.' },
 ];
 
 export const REFUND_POLICY = {
   title: 'NO REFUND POLICY',
-  content: 'Because our services involve extensive campaign preparation, strategic setup, and active management, payments are non-refundable once work has commenced. Please review the service deliverables before purchasing.',
+  content: 'Payments are non-refundable after setup or campaign work begins. Please confirm the scope and deliverables before purchasing.',
 };
 
 export const DISCLAIMER = {
@@ -110,25 +110,25 @@ export const HERO_STATS = [
 ];
 
 export const PROBLEMS = [
-  { icon: '📉', title: 'YOUR ADS HIT A CEILING', description: 'More budget, same results. Scaling takes fresh creatives, ruthless testing and daily bid work.' },
-  { icon: '💸', title: 'BUDGET LEAKS DAILY', description: 'Wrong targeting and broken tracking silently burn 30–40% of your spend. Every. Single. Month.' },
-  { icon: '⏰', title: 'NO TIME TO OPTIMIZE', description: 'You run the business. Daily monitoring and testing is a second job — one that costs you revenue.' },
-];
+  { icon: 'trend-down', title: 'YOUR ADS STOP GROWING', description: 'Adding budget is not enough. Growth needs fresh creative, structured tests and careful bid changes.' },
+  { icon: 'wallet', title: 'BUDGET LEAKS QUIETLY', description: 'Weak targeting, broken tracking and slow decisions can waste spend without making the problem obvious.' },
+  { icon: 'clock', title: 'OPTIMIZATION TAKES TIME', description: 'You run the business. We handle the daily monitoring, testing and campaign decisions.' },
+] as const;
 
 export const NICHES = ['D2C BRANDS', 'E-COMMERCE', 'ED-TECH', 'REAL ESTATE', 'SAAS', 'HEALTH & FITNESS', 'LOCAL BUSINESS', 'FINANCE'];
 
 export const STANDARD = [
-  { icon: '👤', title: 'DEDICATED MEDIA BUYER', description: 'One experienced buyer owns your account end-to-end — not a rotating support queue.' },
-  { icon: '🛡️', title: 'YOUR BUDGET, YOURS', description: 'Ad spend goes straight to the platform. We bill only our management fee — full transparency.' },
-  { icon: '📊', title: 'PLAIN-LANGUAGE REPORTS', description: 'One clear monthly report telling you exactly what scaled — and what we fixed.' },
-];
+  { icon: 'user', title: 'DEDICATED MEDIA BUYER', description: 'One experienced buyer owns your account end-to-end — not a rotating support queue.' },
+  { icon: 'shield', title: 'YOUR BUDGET, YOURS', description: 'Ad spend goes straight to the platform. We bill only our management fee — full transparency.' },
+  { icon: 'report', title: 'PLAIN-LANGUAGE REPORTS', description: 'One clear monthly report telling you exactly what scaled — and what we fixed.' },
+] as const;
 
 export const WORKFLOW = [
-  { step: '01', icon: '🎯', title: 'STRATEGY & AUDIT', description: 'We audit your business, audience and competitors, then build a custom media plan around your goals.' },
-  { step: '02', icon: '🚀', title: 'SETUP & LAUNCH', description: 'Pixels, conversion tracking and campaigns go live across Meta, Google and Telegram — handled end-to-end.' },
-  { step: '03', icon: '⚙️', title: 'DAILY OPTIMIZATION', description: 'Bids, budgets, creatives and targeting are tuned every single day to squeeze out maximum performance.' },
-  { step: '04', icon: '📈', title: 'SCALE & REPORT', description: 'Winning campaigns scale profitably. You get a clear monthly performance report in plain language.' },
-];
+  { step: '01', icon: 'target', title: 'STRATEGY & AUDIT', description: 'We review your business, audience and competitors, then set a practical media plan around your goal.' },
+  { step: '02', icon: 'rocket', title: 'SETUP & LAUNCH', description: 'We set up tracking and launch the right campaigns across Meta, Google or Telegram.' },
+  { step: '03', icon: 'settings', title: 'DAILY OPTIMIZATION', description: 'We monitor bids, budgets, creative and targeting, then improve what the data shows.' },
+  { step: '04', icon: 'trend-up', title: 'SCALE & REPORT', description: 'We grow the strongest campaigns and send a clear monthly report in plain language.' },
+] as const;
 
 // Replace these examples with real, permissioned client results before launch.
 export const TESTIMONIALS = [
@@ -142,9 +142,9 @@ export const TESTIMONIALS = [
 
 export const COMPARISON = {
   columns: [
-    { id: 'inhouse', icon: '🏢', name: 'IN-HOUSE TEAM', tagline: 'Hire & manage yourself', highlight: false },
-    { id: 'freelance', icon: '🧑‍💻', name: 'FREELANCER', tagline: 'One person, mixed skills', highlight: false },
-    { id: 'adstele', icon: '⚡', name: 'ADSTELE', tagline: 'Dedicated media buyer team', highlight: true },
+    { id: 'inhouse', icon: 'office', name: 'IN-HOUSE TEAM', tagline: 'Hire & manage yourself', highlight: false },
+    { id: 'freelance', icon: 'laptop', name: 'FREELANCER', tagline: 'One person, mixed skills', highlight: false },
+    { id: 'adstele', icon: 'bolt', name: 'ADSTELE', tagline: 'Dedicated media buyer team', highlight: true },
   ],
   rows: [
     { label: 'MONTHLY COST', inhouse: '₹40–60k+ (salary)', freelance: '₹5–15k, quality varies', adstele: 'Fixed from ₹3,199' },

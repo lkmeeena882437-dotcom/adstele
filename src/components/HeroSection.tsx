@@ -8,9 +8,9 @@ import { RevealLine } from './Reveal';
 import Sticker from './Sticker';
 
 const PLATFORMS = [
-  { key: 'meta', icon: '📘', label: 'META ADS', ring: 'rgba(10,132,255,.5)' },
-  { key: 'google', icon: '🔍', label: 'GOOGLE ADS', ring: 'rgba(52,168,83,.5)' },
-  { key: 'telegram', icon: '📢', label: 'TELEGRAM ADS', ring: 'rgba(42,171,238,.5)' },
+  { key: 'meta', icon: 'meta', label: 'META ADS', ring: 'rgba(10,132,255,.5)' },
+  { key: 'google', icon: 'search', label: 'GOOGLE ADS', ring: 'rgba(52,168,83,.5)' },
+  { key: 'telegram', icon: 'broadcast', label: 'TELEGRAM ADS', ring: 'rgba(42,171,238,.5)' },
 ] as const;
 
 const ROTATING = ['META', 'TELEGRAM', 'GOOGLE'] as const;
@@ -25,6 +25,7 @@ function BrandWord({ word }: { word: typeof ROTATING[number] }) {
 function RotatingWord() {
   const [index, setIndex] = useState(0);
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const timer = window.setInterval(() => setIndex(value => (value + 1) % ROTATING.length), 2600);
     return () => window.clearInterval(timer);
   }, []);
@@ -50,6 +51,9 @@ function RotatingWord() {
 function InteractivePlatformTags() {
   const refs = useRef<Record<string, HTMLAnchorElement | null>>({});
   useEffect(() => {
+    const canProject = window.matchMedia('(min-width: 768px) and (pointer: fine)').matches
+      && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!canProject) return;
     let frame = 0;
     const update = () => {
       const heroProgress = Math.max(0, Math.min(1, 1 - window.scrollY / (window.innerHeight * 0.75)));
@@ -77,7 +81,7 @@ function InteractivePlatformTags() {
           className="platform-tag chip-dark"
           data-cursor="EXPLORE"
         >
-          <Sticker emoji={platform.icon} size="sm" tilt={index * 6 - 5} />
+          <Sticker icon={platform.icon} size="sm" tilt={index * 6 - 5} />
           {platform.label.replace(' ADS', '')}
         </a>
       ))}
@@ -88,6 +92,7 @@ function InteractivePlatformTags() {
 export default function HeroSection() {
   const hero = useRef<HTMLElement>(null);
   useEffect(() => {
+    if (!window.matchMedia('(pointer: fine)').matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     let frame = 0;
     const move = (event: PointerEvent) => {
       cancelAnimationFrame(frame);
@@ -112,13 +117,13 @@ export default function HeroSection() {
 
       <div className="hidden lg:block absolute left-10 top-44 z-10">
         <div className="chip-dark rounded-2xl px-4 py-3 flex items-center gap-3 float">
-          <Sticker emoji="📈" size="md" tilt={-8} />
+          <Sticker icon="trend-up" size="md" tilt={-8} />
           <div><p className="font-heading font-bold text-white text-sm">4.8x ROAS</p><p className="text-[10px] text-slate-300">Avg. across accounts</p></div>
         </div>
       </div>
       <div className="hidden lg:block absolute right-10 top-72 z-10">
         <div className="chip-dark rounded-2xl px-4 py-3 flex items-center gap-3 float-slow">
-          <Sticker emoji="🎯" size="md" tilt={7} />
+          <Sticker icon="target" size="md" tilt={7} />
           <div><p className="font-heading font-bold text-white text-sm">120+ Campaigns</p><p className="text-[10px] text-slate-300">Launched & scaled</p></div>
         </div>
       </div>
@@ -134,10 +139,10 @@ export default function HeroSection() {
           <span className="text-[9px] sm:text-[11px] font-semibold tracking-[.18em] text-slate-100">PREMIUM PERFORMANCE MARKETING AGENCY</span>
         </m.div>
 
-        <h1 className="h-hero font-heading text-white tracking-[-.035em]">
-          <RevealLine innerClassName="hero-3d" delay={0.15}>ADS THAT PRINT</RevealLine>
-          <RevealLine innerClassName="hero-3d flex flex-wrap justify-center items-baseline gap-x-[.22em]" delay={0.3}>
-            <span>PROFIT ON</span><RotatingWord />
+        <h1 className="hero-headline h-hero font-heading tracking-[-.035em]">
+          <RevealLine innerClassName="hero-title-main" delay={0.15}>TURN AD SPEND INTO</RevealLine>
+          <RevealLine innerClassName="hero-title-platform flex flex-wrap justify-center items-baseline gap-x-[.22em]" delay={0.3}>
+            <span>GROWTH ON</span><RotatingWord />
           </RevealLine>
         </h1>
 
@@ -159,7 +164,7 @@ export default function HeroSection() {
             onClick={() => trackEvent('telegram_click', { location: 'hero' })}
             className="btn-3d btn-shine inline-flex items-center gap-2 px-7 py-3.5 rounded-2xl bg-gradient-to-r from-ice-500 via-cyan-glow to-violet-glow text-white text-sm font-bold shadow-lg shadow-ice-500/40 w-full sm:w-auto justify-center"
           >
-            <Sticker emoji="🚀" size="sm" tilt={-8} /> START SCALING NOW
+            <Sticker icon="rocket" size="sm" tilt={-8} /> START GROWING NOW
           </a>
           <a href="#pricing" className="btn-3d btn-conic inline-flex items-center justify-center px-7 py-3.5 rounded-2xl chip-dark text-sm font-bold text-white w-full sm:w-auto">
             VIEW PRICING →
@@ -172,7 +177,7 @@ export default function HeroSection() {
         >
           {PLATFORMS.map((platform, index) => (
             <div key={platform.key} className="platform-pill chip-dark" style={{ boxShadow: `0 0 0 1px ${platform.ring}, 0 10px 26px -15px ${platform.ring}` }}>
-              <Sticker emoji={platform.icon} size="sm" tilt={index * 6 - 5} />
+              <Sticker icon={platform.icon} size="sm" tilt={index * 6 - 5} />
               <span>{platform.label}</span>
             </div>
           ))}
