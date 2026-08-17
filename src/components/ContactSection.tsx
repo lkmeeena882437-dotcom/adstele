@@ -1,58 +1,45 @@
 import Section from './Section';
 import TiltCard from './TiltCard';
+import Sticker from './Sticker';
+import Kicker from './Kicker';
+import LeadForm from './LeadForm';
+import { WordReveal } from './Reveal';
 import { LINKS } from '../data/content';
 import { trackEvent } from '../utils/analytics';
 
+const CONTACTS = [
+  { icon: '💬', title: 'TALK TO OUR TEAM', detail: '@Adstele_support', href: LINKS.telegramSupport, cursor: 'CHAT', event: 'telegram_click' },
+  { icon: '📅', title: 'BOOK A FREE STRATEGY CALL', detail: '15 minutes — no pitch, just a plan', href: LINKS.calendly, cursor: 'BOOK', event: 'calendly_click' },
+  { icon: '📢', title: 'OUR CHANNEL', detail: '@adstele_agency', href: LINKS.telegramChannel, cursor: 'OPEN', event: 'channel_click' },
+] as const;
+
 export default function ContactSection() {
   return (
-    <Section id="contact" scene="contact">
-      <div className="text-center mb-8 sm:mb-10">
-        <p className="text-xs font-semibold text-cyan-500 tracking-widest mb-3">CONTACT</p>
-        <h2 className="font-[var(--font-heading)] text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-3">
-          LET'S <span className="gradient-text-violet">WORK TOGETHER</span>
+    <Section id="contact" scene="contact" ghost="07">
+      <header className="section-header">
+        <Kicker className="text-cyan-600">CONTACT</Kicker>
+        <h2 className="h-section font-heading text-slate-900">
+          <WordReveal solidClassName="headline-3d">READY TO WIN? <span className="gradient-text-violet">LET&apos;S TALK</span></WordReveal>
         </h2>
-        <p className="text-slate-500 max-w-md mx-auto text-sm px-2">
-          Message us on Telegram. Tell us your business and goals — we'll handle the rest.
-        </p>
-      </div>
+        <p>Pick the fastest way to reach us, or send a brief and we&apos;ll come back with a clear next step.</p>
+      </header>
 
-      <div className="max-w-md mx-auto space-y-3">
-        <TiltCard max={5} className="rounded-2xl">
-          <a
-            href={LINKS.telegramSupport}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => trackEvent('telegram_click', { type: 'support' })}
-            className="btn-magnetic btn-3d flex items-center gap-4 p-5 glass-card rounded-2xl group"
-          >
-            <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-ice-500 to-cyan-glow flex items-center justify-center text-xl shrink-0">
-              💬
-            </div>
-            <div>
-              <p className="text-sm font-bold text-slate-800 group-hover:text-ice-600 transition-colors">TALK TO OUR TEAM</p>
-              <p className="text-xs text-slate-500">@Adstele_support</p>
-            </div>
-          </a>
-        </TiltCard>
-
-        <TiltCard max={5} className="rounded-2xl">
-          <a
-            href={LINKS.telegramChannel}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => trackEvent('channel_click')}
-            className="btn-magnetic btn-3d flex items-center gap-4 p-5 glass-card rounded-2xl group"
-          >
-            <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-violet-glow to-pink-accent flex items-center justify-center text-xl shrink-0">
-              📢
-            </div>
-            <div>
-              <p className="text-sm font-bold text-slate-800 group-hover:text-violet-600 transition-colors">OUR CHANNEL</p>
-              <p className="text-xs text-slate-500">@adstele_agency</p>
-            </div>
-          </a>
-        </TiltCard>
+      <div className="max-w-2xl mx-auto space-y-3">
+        {CONTACTS.map((item, index) => (
+          <TiltCard key={item.title} max={5} className="rounded-2xl">
+            <a
+              href={item.href} target="_blank" rel="noopener noreferrer" data-cursor={item.cursor}
+              onClick={() => trackEvent(item.event, { location: 'contact' })}
+              className="btn-3d flex items-center gap-5 p-5 glass-card rounded-2xl group"
+            >
+              <Sticker emoji={item.icon} size="xl" tilt={index * 7 - 7} float />
+              <span><strong className="block font-heading text-sm text-slate-900 group-hover:text-ice-600 transition-colors">{item.title}</strong><small className="text-xs text-slate-500">{item.detail}</small></span>
+              <span className="ml-auto text-slate-400 group-hover:translate-x-1 transition-transform">→</span>
+            </a>
+          </TiltCard>
+        ))}
       </div>
+      <div className="max-w-2xl mx-auto mt-8"><LeadForm /></div>
     </Section>
   );
 }
