@@ -6,6 +6,7 @@ import { WordReveal } from './Reveal';
 import { SERVICES } from '../data/content';
 import { trackEvent } from '../utils/analytics';
 import CheckIcon from './CheckIcon';
+import ArrowRightIcon from './ArrowRightIcon';
 
 export default function ServicesSection() {
   return (
@@ -18,9 +19,12 @@ export default function ServicesSection() {
         <p>Strategy, creative direction, tracking and daily campaign management — handled by one focused team.</p>
       </header>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-6 gap-4 sm:gap-5">
         {SERVICES.map((service, index) => (
-          <TiltCard key={service.id} className={`glass-card glow-border rounded-2xl p-6 flex flex-col ${index % 3 === 1 ? 'lg:translate-y-6' : ''}`}>
+          <TiltCard
+            key={service.id}
+            className={`glass-card glow-border rounded-2xl p-6 flex flex-col lg:col-span-2 ${index === 1 ? 'lg:translate-y-5' : ''} ${index === 3 ? 'lg:col-start-2' : ''}`}
+          >
             <Sticker icon={service.icon} size="lg" tilt={index % 2 ? 7 : -7} />
             <h3 className="font-heading text-sm font-bold text-slate-900 mt-5">{service.title}</h3>
             <p className="text-[11px] font-semibold text-ice-600 mt-0.5">{service.subtitle}</p>
@@ -28,8 +32,8 @@ export default function ServicesSection() {
             <ul className="mt-4 mb-5 space-y-2 flex-1">
               {service.details.map(detail => <li key={detail} className="flex items-start gap-2 text-xs text-slate-600"><CheckIcon className="text-emerald-500" />{detail}</li>)}
             </ul>
-            <a href="#pricing" onClick={() => trackEvent('service_click', { service: service.id })} className="service-link mt-auto text-xs font-bold text-ice-600">
-              SEE PRICING <span className="service-arrow">→</span>
+            <a href="#pricing" onClick={() => trackEvent('service_click', { service: service.id })} className="service-link mt-auto inline-flex items-center gap-1.5 text-xs font-bold text-ice-600">
+              SEE PRICING <ArrowRightIcon className="service-arrow h-3.5 w-3.5" />
             </a>
           </TiltCard>
         ))}

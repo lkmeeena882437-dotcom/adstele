@@ -33,18 +33,18 @@ interface WordRevealProps {
 
 let wordId = 0;
 
-function words(node: ReactNode, solidClassName: string, nested = false): ReactNode {
+function words(node: ReactNode, solidClassName: string, inheritedClassName = ''): ReactNode {
   return Children.map(node, child => {
     if (typeof child === 'string') {
       return child.split(/(\s+)/).map(part => {
         if (/^\s+$/.test(part)) return part;
         const key = `${part}-${wordId++}`;
         return (
-          <span key={key} className="inline-block overflow-hidden align-bottom pb-[0.08em]">
+          <span key={key} className="inline-block overflow-visible align-bottom pb-[0.08em]">
             <m.span
-              className={`inline-block ${!nested ? solidClassName : ''}`}
-              variants={{ hidden: { y: '115%' }, show: { y: 0 } }}
-              transition={{ duration: 0.72, ease }}
+              className={`inline-block ${inheritedClassName || solidClassName}`}
+              variants={{ hidden: { y: '0.14em' }, show: { y: 0 } }}
+              transition={{ duration: 0.48, ease }}
             >
               {part}
             </m.span>
@@ -53,9 +53,12 @@ function words(node: ReactNode, solidClassName: string, nested = false): ReactNo
       });
     }
     if (isValidElement(child)) {
-      const element = child as ReactElement<{ children?: ReactNode }>;
+      const element = child as ReactElement<{ children?: ReactNode; className?: string }>;
+      const nestedClassName = [inheritedClassName, element.props.className]
+        .filter(Boolean)
+        .join(' ');
       return cloneElement(element, {
-        children: words(element.props.children, solidClassName, true),
+        children: words(element.props.children, solidClassName, nestedClassName),
       });
     }
     return child;
@@ -66,10 +69,10 @@ export function WordReveal({ children, className = '', solidClassName = '' }: Wo
   return (
     <m.span
       className={`block ${className}`}
-      variants={{ hidden: {}, show: { transition: { staggerChildren: 0.055 } } }}
+      variants={{ hidden: {}, show: { transition: { staggerChildren: 0.035 } } }}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount: 0.45 }}
+      viewport={{ once: true, amount: 0.12 }}
     >
       {words(children, solidClassName)}
     </m.span>

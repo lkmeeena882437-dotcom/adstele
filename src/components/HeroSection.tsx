@@ -6,6 +6,7 @@ import { trackEvent } from '../utils/analytics';
 import CountUp from './CountUp';
 import { RevealLine } from './Reveal';
 import Sticker from './Sticker';
+import ArrowRightIcon from './ArrowRightIcon';
 
 const PLATFORMS = [
   { key: 'meta', icon: 'meta', label: 'META ADS', ring: 'rgba(10,132,255,.5)' },
@@ -166,8 +167,8 @@ export default function HeroSection() {
           >
             <Sticker icon="rocket" size="sm" tilt={-8} /> START GROWING NOW
           </a>
-          <a href="#pricing" className="btn-3d btn-conic inline-flex items-center justify-center px-7 py-3.5 rounded-2xl chip-dark text-sm font-bold text-white w-full sm:w-auto">
-            VIEW PRICING →
+          <a href="#pricing" className="btn-3d btn-conic inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-2xl chip-dark text-sm font-bold text-white w-full sm:w-auto">
+            VIEW PRICING <ArrowRightIcon className="h-4 w-4" />
           </a>
         </m.div>
 

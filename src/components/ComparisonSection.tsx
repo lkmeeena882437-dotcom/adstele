@@ -4,6 +4,7 @@ import Kicker from './Kicker';
 import { WordReveal } from './Reveal';
 import { COMPARISON } from '../data/content';
 import CheckIcon from './CheckIcon';
+import ArrowRightIcon from './ArrowRightIcon';
 
 export default function ComparisonSection() {
   return (
@@ -35,7 +36,9 @@ export default function ComparisonSection() {
         ))}
       </div>
       <div className="text-center mt-7">
-        <a href="#pricing" className="btn-3d inline-flex px-7 py-3.5 rounded-xl bg-slate-900 text-white text-xs font-bold" data-cursor="PRICING">SEE EXACT PRICING →</a>
+        <a href="#pricing" className="btn-3d inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-slate-900 text-white text-xs font-bold" data-cursor="PRICING">
+          SEE EXACT PRICING <ArrowRightIcon className="h-4 w-4" />
+        </a>
       </div>
     </Section>
   );

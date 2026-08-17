@@ -6,6 +6,7 @@ import LeadForm from './LeadForm';
 import { WordReveal } from './Reveal';
 import { LINKS } from '../data/content';
 import { trackEvent } from '../utils/analytics';
+import ArrowRightIcon from './ArrowRightIcon';
 
 const CONTACTS = [
   { icon: 'chat', title: 'TALK TO OUR TEAM', detail: '@Adstele_support', href: LINKS.telegramSupport, cursor: 'CHAT', event: 'telegram_click' },
@@ -34,7 +35,7 @@ export default function ContactSection() {
             >
               <Sticker icon={item.icon} size="xl" tilt={index * 7 - 7} float />
               <span><strong className="block font-heading text-sm text-slate-900 group-hover:text-ice-600 transition-colors">{item.title}</strong><small className="text-xs text-slate-500">{item.detail}</small></span>
-              <span className="ml-auto text-slate-400 group-hover:translate-x-1 transition-transform">→</span>
+              <ArrowRightIcon className="ml-auto h-4 w-4 text-slate-400 group-hover:translate-x-1 transition-transform" />
             </a>
           </TiltCard>
         ))}
