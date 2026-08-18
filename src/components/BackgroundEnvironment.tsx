@@ -27,16 +27,20 @@ export default function BackgroundEnvironment() {
   const backdrop = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    let frame = 0;
     const update = () => {
       const t = Math.min(1, Math.max(0, 1 - window.scrollY / (window.innerHeight * 0.75)));
       if (backdrop.current) backdrop.current.style.opacity = t.toFixed(3);
+      frame = 0;
     };
+    const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
     update();
-    window.addEventListener('scroll', update, { passive: true });
-    window.addEventListener('resize', update);
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
     return () => {
-      window.removeEventListener('scroll', update);
-      window.removeEventListener('resize', update);
+      window.removeEventListener('scroll', schedule);
+      window.removeEventListener('resize', schedule);
+      cancelAnimationFrame(frame);
     };
   }, []);
 

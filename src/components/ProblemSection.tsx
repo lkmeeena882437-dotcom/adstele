@@ -1,62 +1,46 @@
 import Section from './Section';
 import TiltCard from './TiltCard';
+import Sticker from './Sticker';
+import Kicker from './Kicker';
+import { WordReveal } from './Reveal';
 import { PROBLEMS, STANDARD } from '../data/content';
-import { trackEvent } from '../utils/analytics';
 
 export default function ProblemSection() {
   return (
-    <Section id="platform" scene="problem">
-      <div className="text-center mb-8 sm:mb-10">
-        <p className="text-xs font-semibold text-rose-500 tracking-widest mb-3">THE PROBLEM</p>
-        <h2 className="font-[var(--font-heading)] text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-3">
-          RUNNING ADS ALONE IS <span className="gradient-text-rose">SLOW & EXPENSIVE</span>
+    <Section id="platform" scene="problem" ghost="01">
+      <header className="section-header">
+        <Kicker className="text-rose-500">THE PROBLEM</Kicker>
+        <h2 className="h-section font-heading text-slate-900">
+          <WordReveal solidClassName="headline-3d">FIX THE LEAK IN YOUR <span className="gradient-text-rose">AD SPEND</span></WordReveal>
         </h2>
-        <p className="text-slate-500 max-w-2xl mx-auto text-sm px-2">
-          Most businesses lose money on ads not because the platform is bad — but because no one is optimizing daily. Here's what is actually draining your budget:
-        </p>
-      </div>
+        <p>Every day without expert optimization, your budget leaks. Here&apos;s exactly where the money goes:</p>
+      </header>
 
       <div className="grid md:grid-cols-3 gap-4 sm:gap-5">
-        {PROBLEMS.map(problem => (
+        {PROBLEMS.map((problem, index) => (
           <TiltCard key={problem.title} className="glass-card glow-border rounded-2xl p-6">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-rose-500/10 to-amber-500/10 border border-rose-200/70 flex items-center justify-center text-2xl mb-4">
-              {problem.icon}
-            </div>
-            <h3 className="font-[var(--font-heading)] text-sm font-bold text-slate-900">{problem.title}</h3>
+            <Sticker icon={problem.icon} size="lg" tilt={index * 7 - 8} float />
+            <h3 className="font-heading text-sm font-bold text-slate-900 mt-5">{problem.title}</h3>
             <p className="text-xs text-slate-500 leading-relaxed mt-2">{problem.description}</p>
           </TiltCard>
         ))}
       </div>
 
-      {/* The Adstele Standard — trust band */}
-      <div className="glass-card rounded-2xl p-6 sm:p-8 mt-6">
-        <div className="text-center mb-6">
-          <p className="text-[10px] font-bold tracking-[0.25em] text-ice-500">THE ADSTELE STANDARD</p>
-          <h3 className="font-[var(--font-heading)] text-lg sm:text-xl font-bold text-slate-900 mt-2">
-            WHAT YOU GET ON DAY ONE
+      <div className="glass-card rounded-3xl p-6 sm:p-8 mt-6">
+        <div className="text-center mb-7">
+          <Kicker className="text-ice-600">THE ADSTELE STANDARD</Kicker>
+          <h3 className="font-heading text-xl sm:text-2xl font-bold text-slate-900 mt-3">
+            YOUR <span className="gradient-text">UNFAIR ADVANTAGE</span>, DAY ONE
           </h3>
         </div>
-
-        <div className="grid sm:grid-cols-3 gap-5">
-          {STANDARD.map(point => (
+        <div className="grid sm:grid-cols-3 gap-6">
+          {STANDARD.map((point, index) => (
             <div key={point.title} className="text-center sm:text-left">
-              <div className="w-10 h-10 mx-auto sm:mx-0 rounded-xl bg-gradient-to-br from-ice-500/10 to-violet-glow/10 border border-ice-200/60 flex items-center justify-center text-lg mb-3">
-                {point.icon}
-              </div>
-              <p className="text-xs font-bold text-slate-800">{point.title}</p>
+              <Sticker icon={point.icon} size="md" tilt={index * 7 - 6} />
+              <p className="text-xs font-bold text-slate-800 mt-4">{point.title}</p>
               <p className="text-xs text-slate-500 leading-relaxed mt-1.5">{point.description}</p>
             </div>
           ))}
-        </div>
-
-        <div className="text-center mt-7">
-          <a
-            href="#services"
-            onClick={() => trackEvent('cta_click', { location: 'problem_section' })}
-            className="btn-magnetic btn-3d inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-900 text-white text-xs font-bold"
-          >
-            SEE HOW WE WORK →
-          </a>
         </div>
       </div>
     </Section>
