@@ -83,9 +83,9 @@ export const PRICING = [
 
 export const FAQS = [
   { q: 'What services do you provide?', a: 'We provide premium paid advertising management on Meta (Facebook & Instagram), Google Ads, and Telegram, along with high-converting custom website development.' },
-  { q: 'How much does Meta Ads management cost?', a: 'Our expert Meta Ads management is Rs 3,199 per month, which includes campaign setup, audience targeting, daily monitoring, and scaling.' },
-  { q: 'How much does Google Ads management cost?', a: 'Google Ads management is Rs 3,599 per month, covering Search, Display, YouTube, conversion tracking, and ongoing optimization.' },
-  { q: 'How much does Telegram Ads cost?', a: 'Our Telegram Ads package is a one-time Rs 14,999, which covers end-to-end setup, targeting, creative, and launch of your campaign.' },
+  { q: 'How much does Meta Ads management cost?', a: 'Our expert Meta Ads management is Rs 14,999 per month, which includes campaign setup, audience targeting, daily monitoring, and scaling.' },
+  { q: 'How much does Google Ads management cost?', a: 'Google Ads management is Rs 19,999 per month, covering Search, Display, YouTube, conversion tracking, and ongoing optimization.' },
+  { q: 'How much does Telegram Ads cost?', a: 'Our Telegram Ads package is a one-time Rs 21,999, which covers end-to-end setup, targeting, creative, and launch of your campaign.' },
   { q: 'Do you build websites or landing pages?', a: 'Yes. We build premium, fast-loading websites and landing pages optimized to convert your ad traffic. Pricing is custom based on your exact needs.' },
   { q: 'Do you guarantee ROAS or specific results?', a: 'No. Results depend on your offer, market, budget and platform conditions. We provide careful, data-led management and clear reporting.' },
   { q: 'Who manages my campaigns?', a: 'A dedicated, experienced media buyer from our team will manage your account and monitor your campaigns daily.' },
@@ -147,7 +147,7 @@ export const COMPARISON = {
     { id: 'adstele', icon: 'bolt', name: 'ADSTELE', tagline: 'Dedicated media buyer team', highlight: true },
   ],
   rows: [
-    { label: 'MONTHLY COST', inhouse: 'Rs 40–60k+ (salary)', freelance: 'Rs 5–15k, quality varies', adstele: 'Fixed from Rs 3,199' },
+    { label: 'MONTHLY COST', inhouse: 'Rs 40–60k+ (salary)', freelance: 'Rs 5–15k, quality varies', adstele: 'Fixed from Rs 14,999' },
     { label: 'DAILY OPTIMIZATION', inhouse: 'Depends on workload', freelance: 'Rarely daily', adstele: 'Every single day' },
     { label: 'PLATFORM COVERAGE', inhouse: 'Usually one platform', freelance: '1–2 platforms', adstele: 'Meta + Google + Telegram' },
     { label: 'REPORTING', inhouse: 'You build the reports', freelance: 'Screenshots, no insights', adstele: 'Plain-language monthly report' },
