@@ -56,19 +56,19 @@ export const SERVICES = [
 
 export const PRICING = [
   {
-    id: 'telegram-ads', name: 'TELEGRAM ADS', subtitle: 'Complete Telegram Ad Package', price: 'Rs 14,999', period: '',
+    id: 'telegram-ads', name: 'TELEGRAM ADS', subtitle: 'Complete Telegram Ad Package', price: 'Rs 21,999', period: '',
     description: 'End-to-end Telegram campaign — setup, targeting, creative & launch.',
     features: ['Telegram TON Ad campaign', 'Campaign setup & targeting', 'Ad creative development', 'Channel rank optimization', 'Delivery & performance report'],
     cta: 'START TELEGRAM ADS', highlight: false, label: 'ONE-TIME SETUP',
   },
   {
-    id: 'meta-ads', name: 'META ADS', subtitle: 'Facebook & Instagram Management', price: 'Rs 3,199', period: '/month',
+    id: 'meta-ads', name: 'META ADS', subtitle: 'Facebook & Instagram Management', price: 'Rs 14,999', period: '/month',
     description: 'Full monthly management of your Facebook & Instagram campaigns.',
     features: ['Facebook & Instagram setup', 'Audience research & targeting', 'Ad creative guidance', 'Daily campaign monitoring', 'Budget & bid optimization', 'Monthly performance report'],
     cta: 'START META ADS', highlight: true, label: 'MOST POPULAR',
   },
   {
-    id: 'google-ads', name: 'GOOGLE ADS', subtitle: 'Search, Display & YouTube', price: 'Rs 3,599', period: '/month',
+    id: 'google-ads', name: 'GOOGLE ADS', subtitle: 'Search, Display & YouTube', price: 'Rs 19,999', period: '/month',
     description: 'Search, Display & YouTube — tracked, tuned and optimized monthly.',
     features: ['Keyword research & strategy', 'Search & display campaigns', 'Conversion tracking setup', 'Bid & budget optimization', 'Monthly performance report'],
     cta: 'START GOOGLE ADS', highlight: false, label: 'HIGH INTENT TRAFFIC',
