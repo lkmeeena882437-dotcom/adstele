@@ -46,3 +46,14 @@ npm run dev
 npm run build   # outputs to dist/
 npm run preview
 ```
+
+## Tracking & search visibility setup
+
+- Meta Pixel is consent-gated. After consent, it sends `PageView` plus one custom signal: `TelegramChannelClick`. Support/DM, form, pricing, and calendar actions are deliberately not sent to Meta for this subscriber-focused funnel. The event means a visitor clicked the channel link—not that Telegram confirmed a join. In Events Manager, create a custom conversion from `TelegramChannelClick` before selecting it as an ad-set optimization event.
+- First-touch `utm_source`, `utm_medium`, `utm_campaign`, `utm_content`, and `utm_term` are retained for up to 90 days only after consent, then attached to Pixel events. Example campaign URL: `?utm_source=meta&utm_medium=paid_social&utm_campaign=campaign-name&utm_content=ad-name&utm_term=ad-set-name`. Form names and phone numbers are never sent to Meta.
+- To separate actual channel joins by ad campaign, create a distinct Telegram invite link for each campaign and set the optional `VITE_TELEGRAM_INVITE_LINKS` JSON map. Use lower-case `utm_campaign` values as keys; optional fallbacks are `source:meta`, `source:google`, and `default`. If no invite map is configured, the site falls back to the public channel link, so it can count link clicks but not campaign-specific joins.
+- A website Pixel cannot see what happens inside Telegram. To attribute channel joins, use separate Telegram invite links per campaign. To confirm actual Telegram DMs as conversions, route through a Telegram bot with campaign start parameters and a webhook; sending those conversions to Meta also requires a secured Meta Conversions API token and a suitable first-party store. Do not count channel/DM link clicks as completed leads.
+- Copy `.env.example` to `.env.local` for local testing and set `VITE_META_PIXEL_ID` to the Pixel ID. For Vercel, add `VITE_META_PIXEL_ID` as an environment variable and redeploy. Pixel IDs are public browser IDs; do not put account passwords or access tokens in frontend code.
+- `VITE_SITE_URL` supplies the canonical, Open Graph, structured-data and sitemap origin. It defaults to `https://adstele.vercel.app`. Keep that value until the custom domain is purchased, connected in Vercel, and serving the site. Then set it to `https://adstele.in` and redeploy so canonical tags, `robots.txt` and `sitemap.xml` all move together.
+- Once the custom domain is live, add/verify its Domain property in Google Search Console through DNS, submit `/sitemap.xml`, and request indexing for the homepage. The current Vercel Search Console property does not automatically verify the future domain.
+- SEO work provides correct technical signals, not a ranking guarantee. Keep service/location claims accurate; do not add a physical business address unless it is a real, customer-facing location.

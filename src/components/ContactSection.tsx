@@ -6,12 +6,13 @@ import LeadForm from './LeadForm';
 import { WordReveal } from './Reveal';
 import { LINKS } from '../data/content';
 import { trackEvent } from '../utils/analytics';
+import { getTelegramChannelUrl } from '../utils/telegram';
 import ArrowRightIcon from './ArrowRightIcon';
 
 const CONTACTS = [
+  { icon: 'broadcast', title: 'SEE OUR WORK & CLIENT REVIEWS', detail: '@adstele_agency — open our Telegram channel first', href: LINKS.telegramChannel, cursor: 'OPEN', event: 'channel_click' },
   { icon: 'chat', title: 'TALK TO OUR TEAM', detail: '@Adstele_support', href: LINKS.telegramSupport, cursor: 'CHAT', event: 'telegram_click' },
   { icon: 'calendar', title: 'BOOK A FREE STRATEGY CALL', detail: '15 minutes — no pitch, just a plan', href: LINKS.calendly, cursor: 'BOOK', event: 'calendly_click' },
-  { icon: 'broadcast', title: 'OUR CHANNEL', detail: '@adstele_agency', href: LINKS.telegramChannel, cursor: 'OPEN', event: 'channel_click' },
 ] as const;
 
 export default function ContactSection() {
@@ -29,7 +30,7 @@ export default function ContactSection() {
         {CONTACTS.map((item, index) => (
           <TiltCard key={item.title} max={5} className="rounded-2xl">
             <a
-              href={item.href} target="_blank" rel="noopener noreferrer" data-cursor={item.cursor}
+              href={item.event === 'channel_click' ? getTelegramChannelUrl() : item.href} target="_blank" rel="noopener noreferrer" data-cursor={item.cursor}
               onClick={() => trackEvent(item.event, { location: 'contact' })}
               className="btn-3d flex items-center gap-5 p-5 glass-card rounded-2xl group"
             >

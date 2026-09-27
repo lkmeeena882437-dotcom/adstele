@@ -17,7 +17,7 @@ export function RevealLine({ children, className = '', innerClassName = '', dela
         className={`block ${innerClassName}`}
         initial={{ y: '115%' }}
         animate={{ y: 0 }}
-        transition={{ duration: 0.8, delay, ease }}
+        transition={{ duration: 0.34, delay, ease }}
       >
         {children}
       </m.span>
@@ -44,7 +44,7 @@ function words(node: ReactNode, solidClassName: string, inheritedClassName = '')
             <m.span
               className={`inline-block ${inheritedClassName || solidClassName}`}
               variants={{ hidden: { y: '0.14em' }, show: { y: 0 } }}
-              transition={{ duration: 0.48, ease }}
+              transition={{ duration: 0.28, ease }}
             >
               {part}
             </m.span>
@@ -69,7 +69,7 @@ export function WordReveal({ children, className = '', solidClassName = '' }: Wo
   return (
     <m.span
       className={`block ${className}`}
-      variants={{ hidden: {}, show: { transition: { staggerChildren: 0.035 } } }}
+      variants={{ hidden: {}, show: { transition: { staggerChildren: 0.012 } } }}
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.12 }}

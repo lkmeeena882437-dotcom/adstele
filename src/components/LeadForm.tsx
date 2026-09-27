@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from 'react';
 import { LINKS, SERVICES } from '../data/content';
 import Sticker from './Sticker';
+import { trackEvent } from '../utils/analytics';
 
 type Status = 'idle' | 'sending' | 'success' | 'error';
 
@@ -26,6 +27,7 @@ export default function LeadForm() {
         body: JSON.stringify(data),
       });
       if (!response.ok) throw new Error('We could not send that yet. Please use Telegram or try again.');
+      trackEvent('lead', { service: String(data.service ?? '') });
       setStatus('success');
       form.reset();
     } catch (reason) {

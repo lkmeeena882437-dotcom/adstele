@@ -56,36 +56,36 @@ export const SERVICES = [
 
 export const PRICING = [
   {
-    id: 'telegram-ads', name: 'TELEGRAM ADS', subtitle: 'Complete Telegram Ad Package', price: 'Rs 21,999', period: '',
+    id: 'telegram-ads', name: 'TELEGRAM ADS', subtitle: 'Complete Telegram Ad Package',
     description: 'End-to-end Telegram campaign — setup, targeting, creative & launch.',
     features: ['Telegram TON Ad campaign', 'Campaign setup & targeting', 'Ad creative development', 'Channel rank optimization', 'Delivery & performance report'],
-    cta: 'START TELEGRAM ADS', highlight: false, label: 'ONE-TIME SETUP',
+    highlight: false, label: 'ONE-TIME SETUP',
   },
   {
-    id: 'meta-ads', name: 'META ADS', subtitle: 'Facebook & Instagram Management', price: 'Rs 14,999', period: '/month',
+    id: 'meta-ads', name: 'META ADS', subtitle: 'Facebook & Instagram Management',
     description: 'Full monthly management of your Facebook & Instagram campaigns.',
     features: ['Facebook & Instagram setup', 'Audience research & targeting', 'Ad creative guidance', 'Daily campaign monitoring', 'Budget & bid optimization', 'Monthly performance report'],
-    cta: 'START META ADS', highlight: true, label: 'MOST POPULAR',
+    highlight: true, label: 'MOST POPULAR',
   },
   {
-    id: 'google-ads', name: 'GOOGLE ADS', subtitle: 'Search, Display & YouTube', price: 'Rs 19,999', period: '/month',
+    id: 'google-ads', name: 'GOOGLE ADS', subtitle: 'Search, Display & YouTube',
     description: 'Search, Display & YouTube — tracked, tuned and optimized monthly.',
     features: ['Keyword research & strategy', 'Search & display campaigns', 'Conversion tracking setup', 'Bid & budget optimization', 'Monthly performance report'],
-    cta: 'START GOOGLE ADS', highlight: false, label: 'HIGH INTENT TRAFFIC',
+    highlight: false, label: 'HIGH INTENT TRAFFIC',
   },
   {
-    id: 'website', name: 'CUSTOM WEBSITES', subtitle: 'Web & Landing Pages', price: 'Custom', period: ' Quote',
+    id: 'website', name: 'CUSTOM WEBSITES', subtitle: 'Web & Landing Pages',
     description: 'Premium sites & landing pages built to convert paid traffic.',
     features: ['Business websites', 'High-converting landing pages', 'Mobile-responsive design', 'Lightning-fast load speeds', 'Direct requirement discussion'],
-    cta: 'GET A CUSTOM QUOTE', highlight: false, label: 'TAILORED FOR YOU',
+    highlight: false, label: 'TAILORED FOR YOU',
   },
 ];
 
 export const FAQS = [
   { q: 'What services do you provide?', a: 'We provide premium paid advertising management on Meta (Facebook & Instagram), Google Ads, and Telegram, along with high-converting custom website development.' },
-  { q: 'How much does Meta Ads management cost?', a: 'Our expert Meta Ads management is Rs 14,999 per month, which includes campaign setup, audience targeting, daily monitoring, and scaling.' },
-  { q: 'How much does Google Ads management cost?', a: 'Google Ads management is Rs 19,999 per month, covering Search, Display, YouTube, conversion tracking, and ongoing optimization.' },
-  { q: 'How much does Telegram Ads cost?', a: 'Our Telegram Ads package is a one-time Rs 21,999, which covers end-to-end setup, targeting, creative, and launch of your campaign.' },
+  { q: 'How much does Meta Ads management cost?', a: 'The fee depends on your goals and campaign scope. Message us on Telegram for a tailored quote; we confirm the full scope and fee before any work begins.' },
+  { q: 'How much does Google Ads management cost?', a: 'The fee depends on your goals and campaign scope. Message us on Telegram for a tailored quote; we confirm the full scope and fee before any work begins.' },
+  { q: 'How much does Telegram Ads cost?', a: 'The fee depends on the campaign scope and your goals. Message us on Telegram for a tailored quote; we confirm the full scope and fee before launch.' },
   { q: 'Do you build websites or landing pages?', a: 'Yes. We build premium, fast-loading websites and landing pages optimized to convert your ad traffic. Pricing is custom based on your exact needs.' },
   { q: 'Do you guarantee ROAS or specific results?', a: 'No. Results depend on your offer, market, budget and platform conditions. We provide careful, data-led management and clear reporting.' },
   { q: 'Who manages my campaigns?', a: 'A dedicated, experienced media buyer from our team will manage your account and monitor your campaigns daily.' },
@@ -130,16 +130,6 @@ export const WORKFLOW = [
   { step: '04', icon: 'trend-up', title: 'SCALE & REPORT', description: 'We grow the strongest campaigns and send a clear monthly report in plain language.' },
 ] as const;
 
-// Replace these examples with real, permissioned client results before launch.
-export const TESTIMONIALS = [
-  { name: 'Aryan R.', niche: 'D2C Skincare Brand', metric: '4.2x', metricLabel: 'ROAS IN 60 DAYS', featured: true, quote: 'Adstele rebuilt our funnel and scaled spend 3x without breaking ROAS. Best agency decision we’ve made.' },
-  { name: 'Priya S.', niche: 'Ed-Tech Startup', metric: '+187%', metricLabel: 'MORE CONVERSIONS', featured: false, quote: 'Our cost per lead dropped by half in the first month. Reports actually tell us what changed and why.' },
-  { name: 'Rohit V.', niche: 'E-commerce — Electronics', metric: '2.8x', metricLabel: 'ROAS ON META', featured: false, quote: 'Three agencies before this one. Adstele is the first team that treats our budget like their own.' },
-  { name: 'Neha K.', niche: 'Real Estate Developer', metric: 'Rs 38 to Rs 14', metricLabel: 'COST PER LEAD', featured: false, quote: 'Qualified site visits tripled. The Telegram campaigns put us in front of exactly the right audience.' },
-  { name: 'Amit M.', niche: 'SaaS — B2B Tools', metric: '+4,500', metricLabel: 'LEADS IN 90 DAYS', featured: false, quote: 'From zero pipeline to a full sales calendar. The Google Ads structure they built still performs.' },
-  { name: 'Sneha D.', niche: 'Health & Fitness', metric: '3.5x', metricLabel: 'REVENUE GROWTH', featured: false, quote: 'They handle everything end-to-end — creatives, testing, scaling. I just approve and watch revenue.' },
-] as const;
-
 export const COMPARISON = {
   columns: [
     { id: 'inhouse', icon: 'office', name: 'IN-HOUSE TEAM', tagline: 'Hire & manage yourself', highlight: false },
@@ -147,7 +137,7 @@ export const COMPARISON = {
     { id: 'adstele', icon: 'bolt', name: 'ADSTELE', tagline: 'Dedicated media buyer team', highlight: true },
   ],
   rows: [
-    { label: 'MONTHLY COST', inhouse: 'Rs 40–60k+ (salary)', freelance: 'Rs 5–15k, quality varies', adstele: 'Fixed from Rs 14,999' },
+    { label: 'FEE APPROACH', inhouse: 'Fixed payroll & benefits', freelance: 'Varies by scope & experience', adstele: 'Custom scope, agreed upfront' },
     { label: 'DAILY OPTIMIZATION', inhouse: 'Depends on workload', freelance: 'Rarely daily', adstele: 'Every single day' },
     { label: 'PLATFORM COVERAGE', inhouse: 'Usually one platform', freelance: '1–2 platforms', adstele: 'Meta + Google + Telegram' },
     { label: 'REPORTING', inhouse: 'You build the reports', freelance: 'Screenshots, no insights', adstele: 'Plain-language monthly report' },

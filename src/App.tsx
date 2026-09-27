@@ -15,6 +15,7 @@ import ContactSection from './components/ContactSection';
 import LegalSections from './components/LegalSections';
 import Footer from './components/Footer';
 import MobileStickyCTA from './components/MobileStickyCTA';
+import TrackingConsent from './components/TrackingConsent';
 
 export default function App() {
   return (
@@ -38,6 +39,7 @@ export default function App() {
       </main>
       <Footer />
       <MobileStickyCTA />
+      <TrackingConsent />
     </div>
   );
 }

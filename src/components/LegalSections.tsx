@@ -46,7 +46,7 @@ export default function LegalSections() {
           <Accordion id="refund" title={REFUND_POLICY.title}>{REFUND_POLICY.content}</Accordion>
           <Accordion id="disclaimer" title="DISCLAIMER"><p>{DISCLAIMER.marketing}</p><p className="mt-2">{DISCLAIMER.financial}</p></Accordion>
           <Accordion id="terms" title="TERMS OF SERVICE">You agree to the selected service scope and deliverables when you engage Adstele Agency. Campaign outcomes vary, and payments are non-refundable once work begins.</Accordion>
-          <Accordion id="privacy" title="PRIVACY POLICY">We use your name, contact details and project requirements only to provide our services. We never sell personal data. Message us to request deletion.</Accordion>
+          <Accordion id="privacy" title="PRIVACY POLICY">We use your name, contact details and project requirements to respond to your enquiry and provide our services. We never sell personal data. If you accept optional tracking, Meta Pixel may receive browser details and website activity to measure advertising and enquiries; we do not send your form name or phone number to Meta. You can change your choice using the Privacy choices button. Message us to request deletion.</Accordion>
         </TiltCard>
       </div>
     </section>

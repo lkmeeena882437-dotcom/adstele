@@ -25,7 +25,7 @@ export default function Section({ id, scene, ghost, children, className = '', co
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.08 }}
-        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
         className={`relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${containerClass}`}
       >
         {children}

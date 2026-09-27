@@ -1,50 +1,39 @@
 import Section from './Section';
 import TiltCard from './TiltCard';
+import Sticker from './Sticker';
 import Kicker from './Kicker';
 import { WordReveal } from './Reveal';
-import { TESTIMONIALS } from '../data/content';
-
-function RatingStars() {
-  return (
-    <span className="my-4 flex gap-1 text-amber-400" role="img" aria-label="5 out of 5 stars">
-      {Array.from({ length: 5 }, (_, index) => (
-        <svg key={index} width="13" height="13" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-          <path d="m10 1.7 2.45 4.96 5.47.8-3.96 3.85.94 5.45L10 14.2l-4.9 2.57.94-5.45-3.96-3.85 5.47-.8L10 1.7Z" />
-        </svg>
-      ))}
-    </span>
-  );
-}
+import { trackEvent } from '../utils/analytics';
+import { getTelegramChannelUrl } from '../utils/telegram';
+import ArrowRightIcon from './ArrowRightIcon';
 
 export default function TestimonialsSection() {
   return (
     <Section id="results" scene="testimonials" ghost="06">
       <header className="section-header">
-        <Kicker className="text-amber-600">CLIENT RESULTS</Kicker>
+        <Kicker className="text-amber-600">OUR WORK &amp; REVIEWS</Kicker>
         <h2 className="h-section font-heading text-slate-900">
-          <WordReveal solidClassName="headline-3d">THE METRICS BEHIND <span className="gradient-text-amber">STRONGER GROWTH.</span></WordReveal>
+          <WordReveal solidClassName="headline-3d">DON&apos;T JUST TAKE OUR WORD FOR IT. <span className="gradient-text-amber">SEE OUR WORK.</span></WordReveal>
         </h2>
-        <p>Return, lead cost, conversions and pipeline — the numbers that guide every decision we make.</p>
+        <p>Browse the campaign work and client feedback we share in our Telegram channel. Review it first, then decide whether you&apos;d like to talk.</p>
       </header>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-        {TESTIMONIALS.map((item, index) => {
-          const initials = item.name.split(' ').map(part => part[0]).join('');
-          return (
-            <TiltCard key={item.name} className={`rounded-2xl p-6 flex flex-col ${item.featured ? 'bg-slate-900 text-white shadow-2xl shadow-amber-400/10' : 'glass-card'} ${index % 3 === 1 ? 'lg:translate-y-6' : ''}`}>
-              <p className={`font-heading text-2xl font-bold ${item.featured ? 'text-amber-300' : 'gradient-text-amber'}`}>{item.metric}</p>
-              <p className={`font-mono text-[9px] tracking-[.2em] mt-1 ${item.featured ? 'text-amber-200/70' : 'text-amber-700'}`}>{item.metricLabel}</p>
-              <RatingStars />
-              <blockquote className={`text-[13px] leading-relaxed flex-1 ${item.featured ? 'text-slate-300' : 'text-slate-600'}`}>“{item.quote}”</blockquote>
-              <div className="flex items-center gap-3 mt-5 pt-5 border-t border-slate-400/15">
-                <span className="w-9 h-9 rounded-full grid place-items-center bg-gradient-to-br from-amber-400 to-rose-500 text-white font-bold text-[10px]">{initials}</span>
-                <span><strong className={`block text-xs ${item.featured ? 'text-white' : 'text-slate-800'}`}>{item.name}</strong><small className={item.featured ? 'text-slate-400' : 'text-slate-500'}>{item.niche}</small></span>
-              </div>
-            </TiltCard>
-          );
-        })}
+      <div className="max-w-3xl mx-auto">
+        <TiltCard className="glass-card rounded-3xl p-7 sm:p-10 text-center">
+          <div className="flex justify-center"><Sticker icon="broadcast" size="xl" tilt={-6} float /></div>
+          <h3 className="mt-5 font-heading text-xl sm:text-2xl font-bold text-slate-900">REAL WORK. SHARED DIRECTLY.</h3>
+          <p className="max-w-xl mx-auto mt-3 text-sm leading-relaxed text-slate-600">See the examples and reviews available in the channel. When you&apos;re ready, message our support account from Telegram to discuss your goals and the right plan.</p>
+          <a
+            href={getTelegramChannelUrl()}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackEvent('channel_click', { location: 'results' })}
+            className="btn-3d btn-shine mt-6 inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-ice-500 to-violet-glow px-6 py-3 text-xs font-bold text-white"
+          >
+            OPEN TELEGRAM CHANNEL <ArrowRightIcon className="h-4 w-4" />
+          </a>
+        </TiltCard>
       </div>
-      <p className="font-mono text-center text-[9px] tracking-wider text-slate-400 mt-12">Results vary by market, offer, budget and campaign conditions. Past performance does not guarantee future outcomes.</p>
     </Section>
   );
 }
