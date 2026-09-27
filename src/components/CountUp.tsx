@@ -12,7 +12,7 @@ interface CountUpProps {
  * Counts from 0 to `to` once when scrolled into view.
  * Respects prefers-reduced-motion (jumps straight to the value).
  */
-export default function CountUp({ to, decimals = 0, prefix = '', suffix = '', duration = 1500 }: CountUpProps) {
+export default function CountUp({ to, decimals = 0, prefix = '', suffix = '', duration = 700 }: CountUpProps) {
   const ref = useRef<HTMLSpanElement>(null);
   const started = useRef(false);
   const [display, setDisplay] = useState(0);

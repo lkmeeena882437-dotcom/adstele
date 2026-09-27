@@ -4,6 +4,7 @@ import BrandLogo from './BrandLogo';
 
 export default function Preloader() {
   const [visible, setVisible] = useState(true);
+  const [progress, setProgress] = useState(0);
   useEffect(() => {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let seen = false;
@@ -18,8 +19,24 @@ export default function Preloader() {
       return;
     }
     const mobile = window.matchMedia('(pointer: coarse)').matches;
-    const timer = window.setTimeout(() => setVisible(false), mobile ? 700 : 1100);
-    return () => window.clearTimeout(timer);
+    const duration = mobile ? 250 : 350;
+    const startedAt = performance.now();
+    let frame = 0;
+    let hideTimer = 0;
+    const updateProgress = (now: number) => {
+      const next = Math.min(100, Math.round(((now - startedAt) / duration) * 100));
+      setProgress(next);
+      if (next < 100) {
+        frame = window.requestAnimationFrame(updateProgress);
+      } else {
+        hideTimer = window.setTimeout(() => setVisible(false), 90);
+      }
+    };
+    frame = window.requestAnimationFrame(updateProgress);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.clearTimeout(hideTimer);
+    };
   }, []);
 
   return (
@@ -29,14 +46,15 @@ export default function Preloader() {
           className="preloader"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
         >
           <div className="preloader-mark">
             <span className="preloader-ring" />
             <BrandLogo className="w-14 h-14" />
           </div>
           <p>ADSTELE</p>
-          <span className="preloader-bar"><span /></span>
+          <span className="preloader-bar"><span style={{ width: `${progress}%` }} /></span>
+          <span className="preloader-percent" aria-live="polite">{progress}%</span>
         </m.div>
       )}
     </AnimatePresence>

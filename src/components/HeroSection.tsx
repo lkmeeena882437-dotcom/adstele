@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, m } from 'framer-motion';
-import { BRAND, HERO_STATS, LINKS, NICHES } from '../data/content';
+import { BRAND, HERO_STATS, NICHES } from '../data/content';
 import { platformLabels } from '../three/platformLabels';
 import { trackEvent } from '../utils/analytics';
+import { getTelegramChannelUrl } from '../utils/telegram';
 import CountUp from './CountUp';
 import { RevealLine } from './Reveal';
 import Sticker from './Sticker';
@@ -32,7 +33,7 @@ function RotatingWord() {
   }, []);
   const word = ROTATING[index];
   return (
-    <span className="rw-wrap" style={{ minWidth: '5.1em' }}>
+    <span className="rw-wrap">
       <AnimatePresence mode="wait" initial={false}>
         <m.span
           key={word}
@@ -40,7 +41,7 @@ function RotatingWord() {
           initial={{ y: '115%', rotateX: 42, opacity: 0 }}
           animate={{ y: '0%', rotateX: 0, opacity: 1 }}
           exit={{ y: '-115%', rotateX: -42, opacity: 0 }}
-          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.34, ease: [0.22, 1, 0.36, 1] }}
         >
           <BrandWord word={word} />
         </m.span>
@@ -133,7 +134,7 @@ export default function HeroSection() {
         <m.div
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.05, duration: 0.7 }}
+          transition={{ delay: 0.02, duration: 0.32 }}
           className="inline-flex items-center gap-2 chip-dark rounded-full px-4 py-2 mb-6"
         >
           <span className="w-2 h-2 rounded-full bg-mint-glow pulse-dot" />
@@ -141,15 +142,15 @@ export default function HeroSection() {
         </m.div>
 
         <h1 className="hero-headline h-hero font-heading tracking-[-.035em]">
-          <RevealLine innerClassName="hero-title-main" delay={0.15}>TURN AD SPEND INTO</RevealLine>
-          <RevealLine innerClassName="hero-title-platform flex flex-wrap justify-center items-baseline gap-x-[.22em]" delay={0.3}>
+          <RevealLine innerClassName="hero-title-main" delay={0.05}>TURN AD SPEND INTO</RevealLine>
+          <RevealLine innerClassName="hero-title-platform flex flex-wrap justify-center items-baseline gap-x-[.22em]" delay={0.1}>
             <span>GROWTH ON</span><RotatingWord />
           </RevealLine>
         </h1>
 
         <m.p
           initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.55, duration: 0.7 }}
+          transition={{ delay: 0.14, duration: 0.32 }}
           className="mt-6 max-w-2xl mx-auto text-sm sm:text-base text-slate-100 leading-relaxed"
         >
           {BRAND.statement}
@@ -157,15 +158,15 @@ export default function HeroSection() {
 
         <m.div
           initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.68, duration: 0.7 }}
+          transition={{ delay: 0.2, duration: 0.32 }}
           className="mt-9 flex flex-col sm:flex-row items-center justify-center gap-3"
         >
           <a
-            href={LINKS.telegramSupport} target="_blank" rel="noopener noreferrer" data-cursor="START"
-            onClick={() => trackEvent('telegram_click', { location: 'hero' })}
+            href={getTelegramChannelUrl()} target="_blank" rel="noopener noreferrer" data-cursor="EXPLORE"
+            onClick={() => trackEvent('channel_click', { location: 'hero' })}
             className="btn-3d btn-shine inline-flex items-center gap-2 px-7 py-3.5 rounded-2xl bg-gradient-to-r from-ice-500 via-cyan-glow to-violet-glow text-white text-sm font-bold shadow-lg shadow-ice-500/40 w-full sm:w-auto justify-center"
           >
-            <Sticker icon="rocket" size="sm" tilt={-8} /> START GROWING NOW
+            <Sticker icon="rocket" size="sm" tilt={-8} /> SEE OUR WORK ON TELEGRAM
           </a>
           <a href="#pricing" className="btn-3d btn-conic inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-2xl chip-dark text-sm font-bold text-white w-full sm:w-auto">
             VIEW PRICING <ArrowRightIcon className="h-4 w-4" />
@@ -173,7 +174,7 @@ export default function HeroSection() {
         </m.div>
 
         <m.div
-          initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.82, duration: 0.8 }}
+          initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.24, duration: 0.32 }}
           className="flex flex-wrap justify-center gap-3 mt-8"
         >
           {PLATFORMS.map((platform, index) => (
@@ -185,7 +186,7 @@ export default function HeroSection() {
         </m.div>
 
         <m.div
-          initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.95, duration: 0.8 }}
+          initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.28, duration: 0.32 }}
           className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 max-w-4xl mx-auto mt-12 sm:mt-16"
         >
           {HERO_STATS.map(stat => (
